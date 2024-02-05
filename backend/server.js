@@ -1,21 +1,20 @@
+// import libraries 
 import express from "express";
-import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
+import dbconnect from "./database/index.js";
+import config from './config/index.js';
 
-
-dotenv.config();
+const { PORT } = config;
+import authRoutes from "./routes/auth.routes.js"
 
 const app = express();
-const port = process.env.PORT || 5000;
-
-// app.use(express.json());
+app.use(express.json());
 // app.use(cookieParser);
 
+dbconnect()
 
-app.get('/ahsan', (req, res) => {
-    res.send('Hello World!')
-})
+app.use("/api/auth", authRoutes);
 
-app.listen(port, () => {
-    console.log(`backend app running on port ${port}`)
+app.listen(PORT, () => {
+    console.log(`backend app running on port ${PORT}`)
 })
