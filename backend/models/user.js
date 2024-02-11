@@ -7,6 +7,8 @@ const userSchema = new Schema({
     last_name: {type:String, require: true},
     email: {type:String, require: true,unique: true },
     phone: {type:Number, require: true,unique: true },
+    rollNo: {type:Number, require: true,unique: true },
+    dept: {type:String, require: true },
     picture: {type:String},
     password: {type:String, require: true},
     gender: {type:String, enum: ['male','female'], default: ''},

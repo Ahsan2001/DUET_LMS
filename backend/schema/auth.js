@@ -8,6 +8,8 @@ export const userSignup = Joi.object({
     picture: Joi.string(),
     gender: Joi.string().valid('male', 'female').required(),
     address: Joi.string().min(3).max(30).required(),
+    rollNo: Joi.number().min(3).max(30).required(),
+    dept: Joi.string().min(3).max(30).required(),
     password: Joi.string().min(8).max(25).required(),
     confirmPassword: Joi.ref("password")
 })

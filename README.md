@@ -6,7 +6,7 @@ DUET LMS is a software platform designed to manage online courses, track progres
 - User Authentication (Login, Signup, Forget password)
 
 ### Frontend Ui Done
-- 
+- Sign Signup Forget Password
 
 ### Frontend Functionality Done
 - 

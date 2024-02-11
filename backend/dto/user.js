@@ -6,6 +6,8 @@ class UserDTO {
         this.phone = user.phone;
         this.picture = user.picture;
         this.address = user.address;
+        this.dept = user.dept;
+        this.rollNo = user.rollNo;
     }
 }
 

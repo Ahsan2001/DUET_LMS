@@ -13,7 +13,7 @@ export const Signup = async (req, res, next) => {
         return next(error)
     }
 
-    const { email , phone , first_name , last_name , password , address , picture , gender } = req.body;
+    const { email , phone , first_name , last_name , password , address , rollNo, dept, picture , gender } = req.body;
 
     try {
         const emailInUse = await User.exists({ email });
@@ -25,6 +25,10 @@ export const Signup = async (req, res, next) => {
 
         if (phoneInUse) {
             return res.status(409).json({ message: "Phone Number already registered, contact with IT Department !" })
+        }
+
+        if (rollNo) {
+            return res.status(409).json({ message: "Roll Number already registered, contact with IT Department !" })
         }
 
     } catch (error) {
@@ -51,6 +55,8 @@ export const Signup = async (req, res, next) => {
             last_name,
             address,
             gender,
+            dept,
+            rollNo,
             picture: profilePicture,
             password: hashPassword
         })
