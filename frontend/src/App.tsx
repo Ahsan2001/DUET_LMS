@@ -1,8 +1,10 @@
+import PublicRoutes from "./routes/public";
 
 function App() {
   return (
     <div>
-        Hello Zeeshan
+      <PublicRoutes />
+        {/* Hello Zeeshan */}
     </div>
   );
 }
