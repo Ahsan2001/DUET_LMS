@@ -6,9 +6,7 @@ import { useSelector } from 'react-redux';
 
 const PublicRoutes: React.FC = () => {
 
-
-  const isAuthenticated = useSelector((state:any) => state?.auth);
-  console.log(isAuthenticated)
+  const data = useSelector((state:any) => state?.user);
 
   return (
     <BrowserRouter>
@@ -17,12 +15,7 @@ const PublicRoutes: React.FC = () => {
         <Route path="/signin" element={<Signin />} />
         <Route path="/forget-password" element={<ForgetPassword />} />
         <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="/dashboard"
-          element={
-            <PrivateRoute isAuth={isAuthenticated}>
-              <Dashboard />
-            </PrivateRoute>
-          } />
+        <Route path="/dashboard"  element={<PrivateRoute isAuth={data?.auth}><Dashboard /></PrivateRoute>} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

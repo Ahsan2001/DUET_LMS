@@ -28,12 +28,7 @@ const Signin: React.FC = () => {
         password: values.password
       };
       const response: any = await SignInApi(data);
-
-
-
       if (response.status === 201) {
-       
-
         toast.success(response?.data?.message, {
           position: "bottom-right",
           autoClose: false,
@@ -85,8 +80,6 @@ const Signin: React.FC = () => {
   };
 
 
-
-
   const { values, touched, handleChange, handleBlur, errors, handleSubmit } = useFormik<SigninFormValues>({
     initialValues: {
       email: "",
@@ -125,18 +118,17 @@ const Signin: React.FC = () => {
               <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                 Email address
               </label>
-              <div className="mt-2">
+              <div className="mt-2 relative ">
                 <input
                   value={values.email}
                   onBlur={handleBlur}
                   onChange={handleChange}
                   id="email"
-                  name="email"
                   type="email"
-                  autoComplete="email"
-                  className="px-2 pb-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
+                  placeholder='Enter email address'
+                  className="px-2 min-h-10 pb-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
                 />
-                {errors.email && touched.email ? <p className='text-alert text-sm	'>{errors.email}</p> : undefined}
+                {errors.email && touched.email ? <p className='text-alert text-xs	absolute inset-inline-start-0'>{errors.email}</p> : undefined}
               </div>
             </div>
 
@@ -147,7 +139,7 @@ const Signin: React.FC = () => {
                 </label>
 
               </div>
-              <div className="mt-2">
+              <div className="mt-2 ">
 
                 <div className='relative'>
                   <input
@@ -155,12 +147,12 @@ const Signin: React.FC = () => {
                     onBlur={handleBlur}
                     onChange={handleChange}
                     id="password"
-                    name="password"
                     type={showPassword ? "text" : "password"}
+                    placeholder='Enter password'
                     autoComplete="current-password"
-                    className="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
+                    className="px-2 min-h-10 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
                   />
-                  {errors.password && touched.password ? <p className='text-alert text-sm	' >{errors.password}</p> : undefined}
+                  {errors.password && touched.password ? <p className='text-alert text-xs	absolute inset-inline-start-0' >{errors.password}</p> : undefined}
                   <div className='absolute top-2 right-2 cursor-pointer' onClick={() => setShowPassword(!showPassword)}>
                     {showPassword ?
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-5 h-5">
@@ -184,7 +176,7 @@ const Signin: React.FC = () => {
 
             <div>
               <button type="submit" onClick={(e) => handleSubmit() } 
-                className="flex w-full justify-center rounded-md bg-primary px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+                className="flex w-full uppercase tracking-wide  transition ease-in-out  justify-center rounded-md bg-primary px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
                 {loading ? <div role="status">
                   <svg aria-hidden="true" className="w-7 h-7 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
