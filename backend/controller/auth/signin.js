@@ -14,8 +14,7 @@ export const Signin = async (req,res,next) => {
     }
 
     const { email, password } = req.body;
-    let accessToken;
-    let user
+    let accessToken, user
     try {
         user = await User.findOne({email})
      
@@ -30,7 +29,6 @@ export const Signin = async (req,res,next) => {
         }
 
     } catch (error) {
-        console.error(error);  
         return res.status(401).json({ message: "Invalid credentials", error: error.message });
     }
     
@@ -44,5 +42,5 @@ export const Signin = async (req,res,next) => {
 
     const userDTO = new UserDTO(user);
     
-    return res.status(201).json({ user: userDTO, auth: true })
+    return res.status(201).json({ message: "User Successfully Login", user: userDTO, auth: true })
 }
