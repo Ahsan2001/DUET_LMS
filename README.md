@@ -9,7 +9,7 @@ DUET LMS is a software platform designed to manage online courses, track progres
 - Sign Signup Forget Password
 
 ### Frontend Functionality Done
-- 
+- User Signin Done save user data in redux
 
 ### Tech Stack
 - Frontend: React.js + Typescript
