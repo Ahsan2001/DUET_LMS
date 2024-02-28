@@ -101,7 +101,7 @@ const Signup: React.FC = () => {
     validationSchema: SignUpSchema,
 
     onSubmit: async (values, action) => {
-      console.log(values, " values")
+      console.log(values, "values")
       await handleSignup();
       action.resetForm()
     },

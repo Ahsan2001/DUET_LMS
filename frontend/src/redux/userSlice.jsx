@@ -26,7 +26,7 @@ export const userSlice = createSlice({
             state.phone = user.phone;
             state.picture = user.picture;
             state.rollNo = user.rollNo;
-            state.department = user.department;
+            state.department = user.dept;
             state.gender = user.gender;
             state.auth = auth;
         },
