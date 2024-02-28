@@ -20,12 +20,12 @@ export interface PrivateRouteProps {
 
 export interface SignupFormValues {
     first_name: string;
-    last_username: string;
+    last_name: string;
     email: string;
-    rollNo: number;
+    rollNo: string;
     dept: string;
-    phone: number;
-    picture: string;
+    phone: string;
+    picture?: string;
     gender: string;
     address: string;
     password: string;

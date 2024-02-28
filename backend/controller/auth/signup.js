@@ -13,11 +13,12 @@ export const Signup = async (req, res, next) => {
         return next(error)
     }
 
-    const { email , phone , first_name , last_name , password , address , rollNo, dept, picture , gender } = req.body;
+    const { email , phone , first_name , last_name , password , address , rollNo, dept , gender } = req.body;
 
     try {
         const emailInUse = await User.exists({ email });
         const phoneInUse = await User.exists({ phone });
+        const rollNoInUse = await User.exists({ rollNo });
 
         if (emailInUse) {
             return res.status(409).json({ message: "Email already registered, contact with IT Department !" })
@@ -27,7 +28,7 @@ export const Signup = async (req, res, next) => {
             return res.status(409).json({ message: "Phone Number already registered, contact with IT Department !" })
         }
 
-        if (rollNo) {
+        if (rollNoInUse) {
             return res.status(409).json({ message: "Roll Number already registered, contact with IT Department !" })
         }
 
@@ -75,5 +76,5 @@ export const Signup = async (req, res, next) => {
 
 
     const userDTO = new UserDTO(user);
-    return res.status(201).json({ user: userDTO, auth: true })
+    return res.status(201).json({ message: "Signup Successfull",user: userDTO, auth: true })
 }

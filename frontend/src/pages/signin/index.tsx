@@ -5,7 +5,7 @@ import { SigninFormValues } from '../../interface';
 import SignInSchema from '../../schemas/signin';
 import { SignInApi } from '../../api/internal';
 import { Flip, Slide, toast } from 'react-toastify'
-import Toast from '../../components/toast';
+import {Toast} from '../../components';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../redux/userSlice';
 
@@ -20,7 +20,7 @@ const Signin: React.FC = () => {
 
 
 
-  const handleLogin = async () => {
+  const handleSignin = async () => {
     setLoading(true);
     try {
       const data = {
@@ -88,7 +88,7 @@ const Signin: React.FC = () => {
 
     validationSchema: SignInSchema,
     onSubmit: async (values, action) => {
-      await handleLogin();
+      await handleSignin();
       action.resetForm()
     },
   })
@@ -166,7 +166,7 @@ const Signin: React.FC = () => {
                     }
                   </div>
                 </div>
-                <div className="text-sm text-right">
+                <div className="text-xs text-right">
                   <Link to="/forget-password" className="font-semibold  text-primary hover:text-alert">
                     Forgot password?
                   </Link>

@@ -42,5 +42,5 @@ export const Signin = async (req,res,next) => {
 
     const userDTO = new UserDTO(user);
     
-    return res.status(201).json({ message: "User Successfully Login", user: userDTO, auth: true })
+    return res.status(201).json({ message: "Signin Successfull", user: userDTO, auth: true })
 }
