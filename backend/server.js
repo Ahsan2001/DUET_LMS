@@ -22,6 +22,12 @@ dbconnect()
 
 app.use("/api/auth", authRoutes);
 
+
+// for deployment testing purpose 
+app.get('/', (req, res) => {
+    res.send('Hello World!')
+})
+
 app.listen(PORT, () => {
     console.log(`backend app running on port ${PORT}`)
 })
