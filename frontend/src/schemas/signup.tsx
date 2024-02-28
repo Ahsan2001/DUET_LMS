@@ -8,7 +8,7 @@ const SignUpSchema = yup.object().shape({
     rollNo: yup.string().min(2).max(20).required("enter your roll number"),
     dept: yup.string().min(4).max(35).required("enter you department"),
     gender: yup.string().oneOf(["male", "female"]).required("select Gender"),
-    address: yup.string().min(8).max(25).required("address is required"),
+    address: yup.string().min(8).max(45).required("address is required"),
     picture: yup.string(),
     password: yup.string().min(8).max(25).required("password is required"),
     confirmPassword: yup.string().oneOf([yup.ref("password")], "passwords must match").required("confirm password is required"),

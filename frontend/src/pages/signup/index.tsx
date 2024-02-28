@@ -84,7 +84,6 @@ const Signup: React.FC = () => {
   };
 
 
-
   const { values, touched, handleChange, handleBlur, errors, handleSubmit } = useFormik<SignupFormValues>({
     initialValues: {
       first_name: "",
@@ -106,13 +105,6 @@ const Signup: React.FC = () => {
       action.resetForm()
     },
   })
-
-
-
-
-
-
-
 
   return (
     <>
@@ -246,8 +238,8 @@ const Signup: React.FC = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 mt-2">
-            <div className="mx-2 mt-5">
+          <div className=" grid grid-cols-1 md:grid-cols-2 ">
+            <div className="mx-2 mt-4">
               <label htmlFor="roll-no" className="block text-sm font-medium leading-6 text-gray-900">
                 Roll No
               </label>
@@ -266,7 +258,7 @@ const Signup: React.FC = () => {
 
               </div>
             </div>
-            <div className="mx-2 mt-5">
+            <div className="mx-2 mt-4">
               <label htmlFor="dept" className="block text-sm font-medium leading-6 text-gray-900">
                 Department
               </label>
@@ -286,7 +278,7 @@ const Signup: React.FC = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 mt-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 mt-2">
             <div className="mx-2  mt-5">
               <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
                 Password
