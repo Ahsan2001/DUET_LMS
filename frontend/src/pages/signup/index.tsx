@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { SignupFormValues } from '../../interface';
 import SignUpSchema from '../../schemas/signup';
 import { SignUpApi } from '../../api/internal';
-import { Toast }from "../../components";
+import { Toast } from "../../components";
 import { Flip, Slide, toast } from 'react-toastify'
 
 const Signup: React.FC = () => {
@@ -162,23 +162,25 @@ const Signup: React.FC = () => {
             </div>
 
             <div className="mx-2 mt-5">
-              <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-                Email address
+              <label htmlFor="dept" className="block text-sm font-medium leading-6 text-gray-900">
+                Department
               </label>
               <div className="mt-2 relative">
                 <input
-                  id="email"
-                  type="email"
-                  name="email"
-                  value={values.email}
+                  id="dept"
+                  type="text"
+                  placeholder='Enter your department'
+                  value={values.dept}
+                  name="dept"
                   onBlur={handleBlur}
-                  placeholder='Enter email address'
                   onChange={handleChange}
                   className="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
-                {errors.email && touched.email ? <p className='text-alert text-xs	absolute inset-inline-start-0'>{errors.email}</p> : undefined}
+                {errors.dept && touched.dept ? <p className='text-alert text-xs absolute inset-inline-start-0 mt-1'>{errors.dept}</p> : undefined}
               </div>
             </div>
+
+
 
             <div className="mx-2 mt-5">
               <label htmlFor="phone" className="block text-sm font-medium leading-6 text-gray-900">
@@ -258,24 +260,31 @@ const Signup: React.FC = () => {
 
               </div>
             </div>
+
+
+
+
+
             <div className="mx-2 mt-4">
-              <label htmlFor="dept" className="block text-sm font-medium leading-6 text-gray-900">
-                Department
+              <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+                Email address
               </label>
               <div className="mt-2 relative">
                 <input
-                  id="dept"
-                  type="text"
-                  placeholder='Enter your department'
-                  value={values.dept}
-                  name="dept"
+                  id="email"
+                  type="email"
+                  name="email"
+                  value={values.email}
                   onBlur={handleBlur}
+                  placeholder='Enter email address'
                   onChange={handleChange}
                   className="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
-                {errors.dept && touched.dept ? <p className='text-alert text-xs absolute inset-inline-start-0 mt-1'>{errors.dept}</p> : undefined}
+                {errors.email && touched.email ? <p className='text-alert text-xs	absolute inset-inline-start-0'>{errors.email}</p> : undefined}
               </div>
             </div>
+
+
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 mt-2">
@@ -369,13 +378,7 @@ const Signup: React.FC = () => {
             <Link to="/signin" className="font-semibold leading-6 text-primary hover:text-indigo-500">
               Sign In Now
             </Link>
-
-
-
-
-
           </p>
-
         </div>
       </div>
       <Toast />

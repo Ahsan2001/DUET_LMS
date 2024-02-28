@@ -22,7 +22,6 @@ dbconnect()
 
 app.use("/api/auth", authRoutes);
 
-
 // for deployment testing purpose 
 app.get('/', (req, res) => {
     res.send('Hello World!')

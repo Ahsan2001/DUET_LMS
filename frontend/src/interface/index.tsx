@@ -37,3 +37,8 @@ export interface SigninFormValues {
     email: string;
     password: string;
 }
+
+
+export interface ForgetFormValues {
+    email: string;
+}

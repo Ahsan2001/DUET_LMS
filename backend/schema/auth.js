@@ -21,7 +21,6 @@ export const userSignin = Joi.object({
 
 export const forgetPassword = Joi.object({
     email: Joi.string().email().required(),
-    phone: Joi.number().min(11).max(12).required(),
 })
 
 export const resetPassword = Joi.object({
