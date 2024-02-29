@@ -42,3 +42,8 @@ export interface SigninFormValues {
 export interface ForgetFormValues {
     email: string;
 }
+
+
+export interface SidebarProps {
+    title: string;
+}
