@@ -17,17 +17,14 @@ export const Signup = async (req, res, next) => {
 
     try {
         const emailInUse = await User.exists({ email });
-        const phoneInUse = await User.exists({ phone });
-        const rollNoInUse = await User.exists({ rollNo });
-
         if (emailInUse) {
             return res.status(409).json({ message: "Email already registered, contact with IT Department !" })
         }
-
+        const phoneInUse = await User.exists({ phone });
         if (phoneInUse) {
             return res.status(409).json({ message: "Phone Number already registered, contact with IT Department !" })
         }
-
+        const rollNoInUse = await User.exists({ rollNo });
         if (rollNoInUse) {
             return res.status(409).json({ message: "Roll Number already registered, contact with IT Department !" })
         }
