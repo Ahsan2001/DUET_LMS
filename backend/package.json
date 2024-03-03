@@ -9,7 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "type": "module",
-  "keywords": [],
+  "keywords": ["Dawood University of Enginnering & Technology E-Learning , DUET Learning Management System, DUET Classroom"],
   "author": "Ahsan, Zeeshan",
   "license": "ISC",
   "dependencies": {

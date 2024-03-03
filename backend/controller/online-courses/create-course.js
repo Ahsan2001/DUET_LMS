@@ -1,7 +1,7 @@
 import CourseDTO from "../../dto/course.js";
 import OnlineLecture from "../../models/onlineLectures.js";
 import { createLectureSchema } from "../../schema/lectures.js";
-import cloudinary from "cloudinary";
+import { v2 as cloudinary } from 'cloudinary';
 import config from '../../config/index.js';
 const { CLOUD_NAME,API_KEY,API_SECRET } = config;
 
@@ -20,10 +20,12 @@ export const CreateCourse = async (req, res, next) => {
     if (error) {
         return next(error);
     }
+    let response
     const { title, author, description, videoPath, coverPhoto } = req.body;
     try {
         response = await cloudinary.uploader.upload(coverPhoto);
     } catch (error) {
+        console.log(error)
         return next(error);
     }
     let newLecture;
@@ -33,14 +35,15 @@ export const CreateCourse = async (req, res, next) => {
             author,
             description,
             videoPath,
-            coverImage: response.url,
+            coverPhoto: response?.secure_url,
         })
+        
         await newLecture.save()
     } catch (error) {
         return next(error)
     }
-    const lecture = new CourseDTO(newLecture)
-    res.status(201).json({ lecture })
+    const lecture = new CourseDTO( newLecture)
+    res.status(201).json({ message: "Course uploaded successfull", lecture })
 }
 
 

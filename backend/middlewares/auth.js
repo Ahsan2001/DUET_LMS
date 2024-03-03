@@ -38,7 +38,7 @@ const Auth = async (req, res, next) => {
         req.user = userDto;
 
         next();
-        
+
     }
 
     catch (error) {

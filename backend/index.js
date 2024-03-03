@@ -6,7 +6,7 @@ import config from './config/index.js';
 import cors from "cors"
 import authRoutes from "./routes/auth.routes.js";
 import lectureRoutes from "./routes/lectures.routes.js"
-// import errorHandler from "./middlewares/errorHandler.js";
+import errorHandler from "./middlewares/errorHandler.js";
 const { PORT } = config;
 
 
@@ -16,6 +16,7 @@ const app = express();
 app.use(cors({origin: true, credentials: true}));
 
 app.use(express.json());
+app.use(cookieParser())
 
 dbconnect()
 
@@ -29,7 +30,7 @@ app.get('/', (req, res) => {
 })
 
 
-// app.use(errorHandler);
+app.use(errorHandler);
 
 app.listen(PORT, () => {
     console.log(`backend app running on port ${PORT}`)
