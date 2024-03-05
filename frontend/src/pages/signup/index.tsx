@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { SignupFormValues } from '../../interface';
 import SignUpSchema from '../../schemas/signup';
-import { SignUpApi } from '../../api/internal';
+import { SignUpApi } from '../../api';
 import { Toast } from "../../components";
 import { Flip, Slide, toast } from 'react-toastify'
 

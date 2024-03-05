@@ -6,17 +6,14 @@ export interface FooterProps {
     title: string;
 }
 
-
 export interface LayoutProps {
     children: React.ReactNode;
 }
 
-
-export interface PrivateRouteProps {
+export interface ProtectedRouteProps {
     isAuth: boolean;
     children: any;
 }
-
 
 export interface SignupFormValues {
     first_name: string;
@@ -31,18 +28,15 @@ export interface SignupFormValues {
     password: string;
     confirmPassword: string;
 }
-  
 
 export interface SigninFormValues {
     email: string;
     password: string;
 }
 
-
 export interface ForgetFormValues {
     email: string;
 }
-
 
 export interface SidebarProps {
     title: string;

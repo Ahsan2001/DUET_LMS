@@ -4,7 +4,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import store from "./redux/index";
 import { Provider } from 'react-redux';
-import PublicRoutes from './routes/public';
+import WebRoutes from './routes';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -13,7 +13,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <PublicRoutes />
+      <WebRoutes />
     </Provider>
   </React.StrictMode>,
 );

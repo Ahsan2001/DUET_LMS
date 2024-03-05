@@ -6,9 +6,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
       <Header title={"Header"} />
-      <main className="content">
-        {children}
-      </main>
+        <main className="content">
+          {children}
+        </main>
       <Footer title={"Footer"} />
     </>
   );

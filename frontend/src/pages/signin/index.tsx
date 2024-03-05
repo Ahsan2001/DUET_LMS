@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { SigninFormValues } from '../../interface';
 import SignInSchema from '../../schemas/signin';
-import { SignInApi } from '../../api/internal';
+import { SignInApi } from '../../api';
 import { Flip, Slide, toast } from 'react-toastify'
 import {Toast} from '../../components';
 import { useDispatch } from 'react-redux';

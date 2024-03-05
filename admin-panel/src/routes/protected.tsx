@@ -1,8 +1,8 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { PrivateRouteProps } from "../interface";
+import { ProtectedRouteProps } from "../interface";
 
-const PrivateRoute: React.FC<PrivateRouteProps> = ({ isAuth, children }) => {
+const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ isAuth, children }) => {
     if (isAuth) {
         return children;
     } else {
@@ -10,4 +10,4 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ isAuth, children }) => {
     }
 };
 
-export default PrivateRoute;
+export default ProtectedRoute;
