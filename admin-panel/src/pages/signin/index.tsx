@@ -120,6 +120,7 @@ export default function SignIn() {
           Sign in
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box className='relative'>
           <TextField
             margin="normal"
             required
@@ -131,10 +132,12 @@ export default function SignIn() {
             label="Email Address"
             name="email"
             autoComplete="email"
+            
             autoFocus
           />
-          {errors.email && touched.email ? <p className='text-alert text-xs	absolute inset-inline-start-0'>{errors.email}</p> : undefined}
-
+          {errors.email && touched.email ? <p className='error-line'>{errors.email}</p> : undefined}
+          </Box>
+          <Box className='relative'>
           <TextField
             margin="normal"
             required
@@ -148,8 +151,8 @@ export default function SignIn() {
             id="password"
             autoComplete="current-password"
           />
-          {errors.password && touched.password ? <p className='text-alert text-xs	absolute inset-inline-start-0' >{errors.password}</p> : undefined}
-
+          {errors.password && touched.password ? <p className='error-line' >{errors.password}</p> : undefined}
+          </Box>
           {loading ? <span>loading ... </span> :
             <Button
               type="submit"

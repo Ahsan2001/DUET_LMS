@@ -1,12 +1,11 @@
 class CourseDTO {
     constructor(course){
-        this.title = course.title;
-        this.description = course.description;
-        this.videoPath = course.videoPath;
         this.author = course.author;
         this.coverPhoto = course.coverPhoto;
+        this.lessons = course.lessons
         this.createdAt = course.createdAt;
         this.courseId = course._id;
+        this.courseName = course.courseName
     }
 }
 

@@ -1,0 +1,8 @@
+.error-line{
+    inset-inline-start: 0;
+    position: absolute;
+}
+
+.relative{
+    position: relative;
+}

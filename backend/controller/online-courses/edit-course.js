@@ -1,7 +1,7 @@
-import OnlineLecture from "../../models/onlineLectures.js";
-import { editLectureSchema } from "../../schema/lectures.js";
+import { courseGetByIdSchema } from "../../schema/lectures.js";
 import { v2 as cloudinary } from 'cloudinary';
 import config from '../../config/index.js';
+import Course from "../../models/course.js";
 const { CLOUD_NAME,API_KEY,API_SECRET } = config;
 
 
@@ -14,44 +14,35 @@ cloudinary.config({
 
 
 export const EditCourse = async (req, res, next) => {
-    const { error } = editLectureSchema.validate(req.body);
-
-    if (error) {
-        return next(error);
-    }
-
-    const { title, description,videoPath, coverPhoto, courseId, createdAt } = req.body;
-
-    let course;
-
     try {
-        course = await OnlineLecture.findOne({ _id: courseId });
-      } catch (error) {
-        return next(error);
-      }
-  
-    if (coverPhoto) {
-
-        let response;
-        try {
-            response = await cloudinary.uploader.upload(coverPhoto);
-        } catch (error) {
+        const { error } = courseGetByIdSchema.validate(req.params);
+        if (error) {
             return next(error);
         }
 
-        await OnlineLecture.updateOne({ _id: courseId}, 
-            {
-                coverPhoto: response.secure_url,
-            }
-        )
-    }
+        const { id } = req.params;
+        const { coverPhoto, courseName } = req.body;
 
-    else {
-        await OnlineLecture.updateOne({ _id: courseId }, { title, description,videoPath });
-      }
-  
-    return res.status(200).json({ message: "Course updated successfully!" });
-}
+        const course = await Course.findById(id);
+        if (!course) {
+            return res.status(404).json({ message: "Course not found" });
+        }
+
+        if (coverPhoto && courseName) {
+            const response = await cloudinary.uploader.upload(coverPhoto);
+            course.coverPhoto = response.secure_url;
+            course.courseName = courseName;
+        } else if (courseName) {
+            course.courseName = courseName;
+        }
+
+        await course.save();
+
+        return res.status(200).json({ message: "Course updated successfully!" });
+    } catch (error) {
+        return next(error);
+    }
+};
 
 
 

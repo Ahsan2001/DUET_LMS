@@ -1,5 +1,5 @@
 import express from "express";
-const lectureRoutes = express.Router();
+const courseRoutes = express.Router();
 
 
 
@@ -11,11 +11,11 @@ import { DeleteCourse } from "../controller/online-courses/delete-course.js";
 import { Detail } from "../controller/online-courses/detail.js";
 
 
-lectureRoutes.get('/get', GetAllCourses);
-lectureRoutes.get('/detail/:id', Detail);
-lectureRoutes.post('/create', Auth, CreateCourse);
-lectureRoutes.post('/edit', Auth, EditCourse);
-lectureRoutes.delete('/delete/:id', Auth, DeleteCourse);
+courseRoutes.get('/get', GetAllCourses);
+courseRoutes.get('/detail/:id', Detail);
+courseRoutes.post('/create', Auth, CreateCourse);
+courseRoutes.post('/edit/:id', Auth, EditCourse);
+courseRoutes.delete('/delete/:id', Auth, DeleteCourse);
 
 
-export default lectureRoutes;
+export default courseRoutes;

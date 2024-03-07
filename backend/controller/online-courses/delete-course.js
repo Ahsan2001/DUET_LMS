@@ -1,4 +1,4 @@
-import OnlineLecture from "../../models/onlineLectures.js";
+import Course from "../../models/course.js";
 import { courseGetByIdSchema } from "../../schema/lectures.js";
 
 
@@ -13,7 +13,7 @@ export const DeleteCourse = async (req, res, next) => {
     const {id} = req.params;
 
     try {
-        await OnlineLecture.deleteOne({_id: id});
+        await Course.deleteOne({_id: id});
         // await Comment.deleteMany({blog: id });
     } catch (error) {
         return next(error)
