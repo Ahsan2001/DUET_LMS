@@ -41,3 +41,8 @@ export interface ForgetFormValues {
 export interface SidebarProps {
     title: string;
 }
+
+
+export interface TitleProps {
+    title: string;
+}

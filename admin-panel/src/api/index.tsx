@@ -12,7 +12,7 @@ const api = axios.create({
 
 
 // Sign In Api
-export const SignInApi = async (data) => {
+export const SignInApi = async (data: any) => {
   let response;
   try {
     response = await api.post("auth/signin", data);
@@ -21,3 +21,16 @@ export const SignInApi = async (data) => {
   }
   return response;
 };
+
+
+// Course api 
+
+export const CourseApi = async () => {
+  let response;
+  try {
+    response = await api.get("/online-lectures/get");
+  } catch (error) {
+    return error;
+  }
+  return response;
+}

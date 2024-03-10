@@ -1,7 +1,7 @@
 import { Flip, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Toast: React.FC = () => {
+export const Toast: React.FC = () => {
     return (
         <ToastContainer
             position="bottom-right"
@@ -16,5 +16,3 @@ const Toast: React.FC = () => {
         />
     )
 }
-
-export default Toast

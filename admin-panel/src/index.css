@@ -1,8 +1,28 @@
-.error-line{
-    inset-inline-start: 0;
-    position: absolute;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.relative{
-    position: relative;
+:root {
+    --background: #fffeee;
+    --primary: #1f2937;
+    --secondary: #ffffef;
+    --alert: rgb(237, 25, 25);
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+body{
+    min-height: 100vh;
 }

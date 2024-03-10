@@ -6,7 +6,7 @@ import Course from "../../models/course.js";
 export const GetAllCourses = async (req, res, next) => {
     try {
         let Courses;
-        Courses = await Course.find({});
+        Courses = await Course.find({}).populate("author");
 
         const coursesDato = [];
 

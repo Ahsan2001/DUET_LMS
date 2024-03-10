@@ -1,0 +1,7 @@
+.bg_secondary{
+   background: var(--background);
+}
+
+.bg_primary{
+    background: var(--primary);
+}

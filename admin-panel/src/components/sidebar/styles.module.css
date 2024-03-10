@@ -1,0 +1,39 @@
+nav {
+    padding: 40px;
+}
+
+nav ul {
+    list-style: none;
+}
+nav ul li {
+    margin: 10px 0 30px;
+}
+
+nav ul li a {
+    color: var(--primary);
+    text-transform: uppercase;
+    font-family: sans-serif;
+    background: var(--secondary);
+    font-weight: 700;
+    border-radius: 6px;
+    border: 1px solid var(--primary);
+    padding: 16px 0px 16px 20px;
+    font-size: 17px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+    transition: 0.5s ease-in;
+}
+
+nav ul li a  svg{
+    width: 25px;
+    height: 20px;
+    margin-bottom: 5px;
+}
+nav ul li a:hover,
+nav ul li a.active{
+    background: var(--primary);
+    color: var(--secondary);
+    border: 1px solid var(--primary);
+}

@@ -1,18 +1,24 @@
+// import library 
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import {  SignIn } from '../pages';
-// import ProtectedRoute from './protected';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+
+// import assets 
+import {  Dashboard, ManageCourses, SignIn } from '../pages';
+import ProtectedRoute from './protected';
 
 const WebRoutes: React.FC = () => {
-  // const {auth} = useSelector((state:any) => state?.user);
+  const {auth} = useSelector((state:any) => state?.user);
   return (
     <BrowserRouter>
-      <Routes>
+      <Routes> 
+        {/* Public Routes  */}
         <Route path="/" element={<SignIn />} />
-        {/* <Route path="/dashboard"  element={<ProtectedRoute isAuth={auth}><h1>dashbaord page here</h1></ProtectedRoute>} /> */}
-        <Route path="/dashboard"  element={<h1>dashbaord page here</h1>} />
         <Route path="*" element={ <h1>Error page here</h1>} />
+        
+        {/* Private Routes  */}
+        <Route path="/dashboard"  element={<ProtectedRoute isAuth={auth}><Dashboard /></ProtectedRoute>} />
+        <Route path="/manage-courses"  element={<ProtectedRoute isAuth={auth}><ManageCourses /></ProtectedRoute>} />
       </Routes>
     </BrowserRouter>
   );

@@ -5,7 +5,7 @@ import { SigninFormValues } from '../../interface';
 import SignInSchema from '../../schemas/signin';
 import { SignInApi } from '../../api';
 import { Flip, Slide, toast } from 'react-toastify'
-import {Toast} from '../../components';
+import { Toast } from '../../components';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../redux/userSlice';
 
@@ -43,9 +43,9 @@ const Signin: React.FC = () => {
 
         dispatch(setUser(response?.data));
         setLoading(false);
-        setTimeout(()=>{
+        setTimeout(() => {
           navigate("/dashboard")
-        },1000 )
+        }, 1000)
       } else {
         setLoading(false);
         toast.error(response?.response?.data?.message, {
@@ -113,7 +113,7 @@ const Signin: React.FC = () => {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <div className="space-y-6">
+          <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); handleSubmit() }}>
             <div>
               <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                 Email address
@@ -175,7 +175,7 @@ const Signin: React.FC = () => {
             </div>
 
             <div>
-              <button type="submit" onClick={(e) => handleSubmit() } 
+              <button type="submit" onClick={(e) => handleSubmit()}
                 className="flex w-full uppercase tracking-wide  transition ease-in-out  justify-center rounded-md bg-primary px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
                 {loading ? <div role="status">
                   <svg aria-hidden="true" className="w-7 h-7 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -186,11 +186,11 @@ const Signin: React.FC = () => {
                 </div> : <span> Sign in</span>}
               </button>
             </div>
-          </div>
+          </form>
 
           <p className="mt-10 text-center text-sm text-gray-500">
             Dont Have a Account ?{' '}
-            <Link to="/signup"  className="font-semibold leading-6 text-primary hover:text-indigo-500">
+            <Link to="/signup" className="font-semibold leading-6 text-primary hover:text-indigo-500">
               Sign Up Now
             </Link>
           </p>
