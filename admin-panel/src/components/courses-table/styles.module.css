@@ -1,0 +1,53 @@
+table.courses_table{
+    background: #fffeee;
+    padding: 20px 40px;
+    border-radius: 8px;
+    margin: 40px auto 10px;
+    width: 90%;
+    text-align: center;
+    overflow-x: auto;
+}
+table.courses_table .authorField {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 10px;
+    gap: 10px;
+}
+table.courses_table thead th{
+    padding: 14px 0;
+    background: #1f2937;
+    color: #fff;
+    font-size: 17px;
+    border-radius: 4px;
+}
+
+table.courses_table .authorField img{
+    width: 40px;
+    height: 40px;
+}
+
+table.courses_table tbody tr td{
+    margin: 20px 0;
+}
+
+.coverPhoto img{
+    width: 160px;
+    height: 70px;
+}   
+
+
+.deleteBtn svg{
+    color: var(--alert);
+}
+
+.loading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.loading svg{
+    color: #fff !important;
+}
