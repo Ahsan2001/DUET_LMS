@@ -11,6 +11,7 @@ import Typography from '@mui/material/Typography';
 import { Button } from "@mui/material";
 import { Slide, toast } from "react-toastify";
 // import { Link } from "react-router-dom";
+import AddIcon from '@mui/icons-material/Add';
 
 // import assets 
 import styles from "./styles.module.css";
@@ -34,7 +35,7 @@ export function CoursesTable() {
   const handleClose = () => setOpen(false);
 
   async function fetchCourses() {
-    setLoading(true); 
+    setLoading(true);
     try {
       const response: any = await GetAllCoursesApi();
       if (response.status === 200) {
@@ -64,14 +65,15 @@ export function CoursesTable() {
     } else {
       toast.error('Something went wrong. Please try again.');
     }
+    fetchCourses();
     handleClose();
   }
 
   useEffect(() => {
     fetchCourses();
-  }, []); 
+  }, []);
 
-  if(loading) {
+  if (loading) {
     return (
       <div className={styles.loading}>
         <Spinner />
@@ -82,31 +84,45 @@ export function CoursesTable() {
   return (
     <>
 
+    <div className={styles.titles}>
+        <h2>Manage Courses</h2>
+        <Button variant="contained" startIcon={<AddIcon />} color="success"> Add New Course</Button>
+    </div>
+
+
       <table className={styles.courses_table} aria-label="simple table">
-        <thead>
-          <tr>
-            <th>Author</th>
-            <th>Course Title</th>
-            <th>Cover Photo</th>
-            <th>Total Lesson</th>
-            <th>Edit Course</th>
-            <th>Delete Course</th>
-          </tr>
-        </thead>
-        <tbody>
-          {courses.map((element, index) => {
-            return (
-              <tr key={index}>
-                <td className={styles.authorField}> <img src={element?.authorPicture} alt={element?.authorName} />{element?.authorName}</td>
-                <td>{element?.courseName}</td>
-                <td className={styles.coverPhoto}><img src={element?.coverPhoto} alt={element?.authorName} /></td>
-                <td>{element?.lessons?.length}</td>
-                <td className={styles.editBtn}><Button variant="outlined" startIcon={<EditIcon />}> Edit </Button></td>
-                <td className={styles.deleteBtn}><Button variant="outlined" startIcon={<DeleteIcon />} onClick={()=> {handleOpen(element?.courseId)}}> Delete </Button></td>
-              </tr>
-            )
-          })}
-        </tbody>
+
+        {courses.length > 0 ? <>
+          <thead>
+            <tr>
+              <th>Author</th>
+              <th>Course Title</th>
+              <th>Cover Photo</th>
+              <th>Total Lesson</th>
+              <th>Add New Lesson</th>
+              <th>Edit Course</th>
+              <th>Delete Course</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            {courses.map((element, index) => {
+              return (
+                <tr key={index}>
+                  <td className={styles.authorField}> <img src={element?.authorPicture} alt={element?.authorName} />{element?.authorName}</td>
+                  <td>{element?.courseName}</td>
+                  <td className={styles.coverPhoto}><img src={element?.coverPhoto} alt={element?.authorName} /></td>
+                  <td>{element?.lessons?.length}</td>
+                  <td> <Button variant="contained" startIcon={<AddIcon />} color="success"> Add</Button></td>
+                  <td className={styles.editBtn}><Button variant="contained" startIcon={<EditIcon />}> Edit </Button></td>
+                  <td className={styles.deleteBtn}><Button variant="outlined" color="error" startIcon={<DeleteIcon />} onClick={() => { handleOpen(element?.courseId) }}> Delete </Button></td>
+                </tr>
+              )
+            })}
+          </tbody></>
+          : <div className={styles.no_record_found}> <h1>No Course Found</h1></div>
+        }
+
       </table>
 
       <Modal
@@ -124,13 +140,13 @@ export function CoursesTable() {
       >
         <Fade in={open}>
           <Box sx={style}>
-            <Typography id="transition-modal-title" variant="h6" component="h2" sx={{ color: "red" }}>
+            <Typography id="transition-modal-title" variant="h6" fontWeight={800} component="h2" sx={{ color: "red" }}>
               Warning
             </Typography>
             <Typography id="transition-modal-description" sx={{ mt: 2, mb: 2 }}>
               You are about to delete the course. Once deleted, it cannot be undone or recovered
             </Typography>
-            <Button variant="contained" startIcon={<DeleteIcon />} color="secondary" onClick={handleDelete}> Confirm Delete</Button>
+            <Button variant="contained" startIcon={<DeleteIcon />} color="error" onClick={handleDelete}> Confirm Delete</Button>
             <Button variant="contained" sx={{ mx: 2 }} onClick={handleClose}> Cancel</Button>
           </Box>
         </Fade>

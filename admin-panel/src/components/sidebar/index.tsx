@@ -7,6 +7,10 @@ import { navLink } from "./content"
 
 export function Sidebar() {
     return (
+        <>
+        <div className={styles.logo}>
+         <img src="./logo.png" alt="university logo"  />
+        </div>
         <nav className={styles.sidebar}>
             <ul>
                 {navLink.map((element, index) => {
@@ -20,6 +24,7 @@ export function Sidebar() {
                 })}
             </ul>
         </nav>
+        </>
     )
 }
 

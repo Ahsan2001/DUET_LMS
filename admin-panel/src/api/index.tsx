@@ -22,6 +22,16 @@ export const SignInApi = async (data: any) => {
   return response;
 };
 
+// Logout Api 
+export const LogoutApi = async () => {
+  let response;
+  try {
+    response = await api.post("auth/logout");
+  } catch (error) {
+    return error;
+  }
+  return response;
+};
 
 // Course api 
 export const GetAllCoursesApi = async () => {
