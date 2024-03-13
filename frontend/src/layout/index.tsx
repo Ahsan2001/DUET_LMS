@@ -5,11 +5,11 @@ import {LayoutProps} from "../interface";
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
-      <Header title={"Header"} />
-        <main className="content">
+      <Header />
+        <main className="content p-8">
           {children}
         </main>
-      <Footer title={"Footer"} />
+      <Footer title={"Share your feedback on ahsan.sabir@yahoo.com to help us improve."} />
     </>
   );
 };

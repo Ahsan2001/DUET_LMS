@@ -4,9 +4,9 @@ import {FooterProps} from "../../interface";
 
 const Footer: React.FC<FooterProps> = ({ title }) => {
   return (
-    <div>
-      <h1>{title}</h1>
-    </div>
+    <footer className='mt-16 py-2'>
+      <h1 className='text-center text-white'> {title}</h1>
+    </footer>
   );
 };
 

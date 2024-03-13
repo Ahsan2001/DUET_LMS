@@ -1,0 +1,12 @@
+.img_upload_custom img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-size: contain;
+}   
+
+.img_upload_custom label{
+    margin: 10px;
+    font-size: 16px;
+    font-weight: 700;
+}

@@ -1,0 +1,17 @@
+.header{
+    background: #1f2937;
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fffeff;
+    font-size: 13px;
+    border-bottom: 1px solid #a4a4a4;
+}
+
+.date_time{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}

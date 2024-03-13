@@ -1,12 +1,26 @@
+// import library 
 import React from 'react';
-import {HeaderProps} from "../../interface";
 
 
-const Header: React.FC<HeaderProps> = ({ title }) => {
+// import assets 
+import { Clock } from '../clock';
+import styles from "./styles.module.css"
+import { CurrentDate } from '../date';
+import { HeaderDropdown } from '../dropdown';
+
+
+
+const Header: React.FC = () => {
   return (
-    <div>
-      <h1>{title}</h1>
-    </div>
+    <header className={styles.header}>
+      <div className={styles.date_time}>
+        <CurrentDate />
+        <Clock />
+      </div>
+      <div>
+        <HeaderDropdown />
+      </div>
+    </header>
   );
 };
 
