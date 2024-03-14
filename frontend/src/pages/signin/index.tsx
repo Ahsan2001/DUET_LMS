@@ -7,7 +7,7 @@ import { SignInApi } from '../../api';
 import { Flip, Slide, toast } from 'react-toastify'
 import { Toast } from '../../components';
 import { useDispatch } from 'react-redux';
-import { setUser } from '../../redux/userSlice';
+import { setUser } from '../../redux/slices/userSlice';
 
 
 const Signin: React.FC = () => {

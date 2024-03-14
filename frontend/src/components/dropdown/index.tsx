@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectSidebarVisibility, toggleSidebar } from '../../redux/slices/sidebarSlice';
+import { Link } from 'react-router-dom';
 
 export function HeaderDropdown() {
     const data = useSelector((state: any) => state?.user);
@@ -7,6 +9,13 @@ export function HeaderDropdown() {
 
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
+    };
+
+    const sidebarVisible = useSelector(selectSidebarVisibility);
+
+    const dispatch = useDispatch();
+    const handleToggleSidebar = () => {
+        dispatch(toggleSidebar());
     };
 
     return (
@@ -24,7 +33,7 @@ export function HeaderDropdown() {
                     src={data?.picture}
                     alt={data?.username}
                 />
-                Bonnie Green
+                {data?.username}
                 <svg
                     className="w-2.5 h-2.5 ms-3"
                     aria-hidden="true"
@@ -49,23 +58,25 @@ export function HeaderDropdown() {
                     className="absolute right-0 z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
                 >
                     <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownAvatarNameButton">
+
+
                         <li>
-                            <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                Dashboard
-                            </a>
+                            <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onClick={handleToggleSidebar}>
+                               {sidebarVisible ? "Close" : "View"} Sidebar</a>
                         </li>
+
                         <li>
-                            <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                            <Link to="/profile" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                 Settings
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                        <a
-                            href="#"
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                        >
-                            Sign out
-                        </a>
+                            <a
+                                href="#"
+                                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                            >
+                                Sign out
+                            </a>
                         </li>
                     </ul>
                 </div>

@@ -9,5 +9,4 @@ export { default as OnlineLectures } from "./online-lectures";
 export { default as LearningResources } from "./learning-resources";
 export { default as Exam } from "./exam";
 export { default as Announcements } from "./announcements";
-export { default as Logout } from "./logout";
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Signup, Signin, ForgetPassword, ResetPassword,NotFound, Dashboard, Profile, OnlineLectures, LearningResources, Exam , Announcements, Logout } from '../pages';
+import { Signup, Signin, ForgetPassword, ResetPassword,NotFound, Dashboard, Profile, OnlineLectures, LearningResources, Exam , Announcements } from '../pages';
 import ProtectedRoute from './protected';
 import { useSelector } from 'react-redux';
 
@@ -22,7 +22,6 @@ const WebRoutes: React.FC = () => {
         <Route path="/learning-resources"  element={<ProtectedRoute isAuth={auth}><LearningResources /></ProtectedRoute>} />
         <Route path="/exam"  element={<ProtectedRoute isAuth={auth}><Exam /></ProtectedRoute>} />
         <Route path="/announcements"  element={<ProtectedRoute isAuth={auth}><Announcements /></ProtectedRoute>} />
-        <Route path="/logout"  element={<ProtectedRoute isAuth={auth}><Logout /></ProtectedRoute>} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

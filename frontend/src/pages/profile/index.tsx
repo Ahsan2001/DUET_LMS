@@ -1,6 +1,5 @@
-import { Sidebar } from "../../components";
+import { Sidebar,ImageUpload } from "../../components";
 import Layout from "../../layout";
-import ImageUpload from "./profile-photo-upload";
 
 const Profile: React.FC = () => {
   return (
@@ -10,7 +9,7 @@ const Profile: React.FC = () => {
         <div className="flex-1 bg-gray-800">
           <Layout>
             <div className="bg-white rounded-lg mx-10 mt-10">
-              <h2 className="text-xl font-semibold  p-3 text-gray-800 text-primary text-white mb-4 px-10">
+              <h2 className="text-xl font-semibold  p-3 text-gray-800   mb-4 px-10">
                 PROFILE SETTING
               </h2>
             </div>
@@ -51,7 +50,7 @@ const Profile: React.FC = () => {
               </div>
             </div>
             <div className="bg-white rounded-lg mt-16 mx-10">
-              <h2 className="text-xl font-semibold  p-3 text-gray-800 text-primary text-white mb-4 px-10">
+              <h2 className="text-xl font-semibold  p-3 text-gray-800   mb-4 px-10">
                 CHANGE PASSWORD
               </h2>
             </div>
