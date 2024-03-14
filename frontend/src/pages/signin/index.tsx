@@ -175,7 +175,7 @@ const Signin: React.FC = () => {
             </div>
 
             <div>
-              <button type="submit" onClick={(e) => handleSubmit()}
+              <button type="submit"
                 className="flex w-full uppercase tracking-wide  transition ease-in-out  justify-center rounded-md bg-primary px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
                 {loading ? <div role="status">
                   <svg aria-hidden="true" className="w-7 h-7 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
