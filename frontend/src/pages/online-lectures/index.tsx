@@ -1,9 +1,37 @@
-import { Sidebar } from "../../components";
+import { useEffect, useState } from "react";
+import { GetCoursesApi } from "../../api";
+import { CourseCard, CourseLoading, Sidebar } from "../../components";
 import Layout from "../../layout";
 
 const OnlineLectures: React.FC = () => {
-    const coverPhotoUrl = 'https://via.placeholder.com/400x200';
-    const authorImageUrl = 'https://via.placeholder.com/50';
+
+    const [loading, setLoading] = useState<boolean>(false);
+    const [course, setCourse] = useState([]);
+
+    async function FetchCourses() {
+        setLoading(true)
+        try {
+            let response: any = await GetCoursesApi();
+            if (response.status === 200) {
+                setCourse(response?.data?.coursesDato)
+                setLoading(false)
+            } else {
+                alert("something went wrong please check console")
+                console.log(response)
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+
+    useEffect(() => {
+        FetchCourses()
+        return () => {
+            setCourse([])
+        }
+    }, [])
+
     return (
         <>
             <div className="bg-gray-100 min-h-screen flex flex-col md:flex-row">
@@ -12,60 +40,16 @@ const OnlineLectures: React.FC = () => {
                     <Layout>
                         <div className="bg-white rounded-lg mx-10 mt-10">
                             <h2 className="text-xl font-semibold  p-3 text-gray-800   mb-4 px-10">
-                               ONLINE LECTURES
+                                ONLINE LECTURES
                             </h2>
                         </div>
-                        <div className="m-10">
-                            <div className="grid grid-cols-12 gap-8">
-                                <div className="col-span-12 sm:col-span-6 lg:col-span-4 border border-gray-500 rounded shadow-lg">
-                                    <img className="w-full" src={coverPhotoUrl} alt="Cover" />
-                                    <div className="px-6 py-4">
-                                        <div className="font-bold text-xl mb-2">Video Title</div>
-                                        <div className="flex items-center mb-4">
-                                            <img className="w-10 h-10 rounded-full mr-4" src={authorImageUrl} alt="Author" />
-                                            <div className="text-sm">
-                                                <p className="text-gray-900 leading-none">Author Name</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-span-12 sm:col-span-6 lg:col-span-4 border border-gray-500 rounded shadow-lg">
-                                    <img className="w-full" src={coverPhotoUrl} alt="Cover" />
-                                    <div className="px-6 py-4">
-                                        <div className="font-bold text-xl mb-2">Video Title</div>
-                                        <div className="flex items-center mb-4">
-                                            <img className="w-10 h-10 rounded-full mr-4" src={authorImageUrl} alt="Author" />
-                                            <div className="text-sm">
-                                                <p className="text-gray-900 leading-none">Author Name</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-span-12 sm:col-span-6 lg:col-span-4 border border-gray-500 rounded shadow-lg">
-                                    <img className="w-full" src={coverPhotoUrl} alt="Cover" />
-                                    <div className="px-6 py-4">
-                                        <div className="font-bold text-xl mb-2">Video Title</div>
-                                        <div className="flex items-center mb-4">
-                                            <img className="w-10 h-10 rounded-full mr-4" src={authorImageUrl} alt="Author" />
-                                            <div className="text-sm">
-                                                <p className="text-gray-900 leading-none">Author Name</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-span-12 sm:col-span-6 lg:col-span-4 border border-gray-500 rounded shadow-lg">
-                                    <img className="w-full" src={coverPhotoUrl} alt="Cover" />
-                                    <div className="px-6 py-4">
-                                        <div className="font-bold text-xl mb-2">Video Title</div>
-                                        <div className="flex items-center mb-4">
-                                            <img className="w-10 h-10 rounded-full mr-4" src={authorImageUrl} alt="Author" />
-                                            <div className="text-sm">
-                                                <p className="text-gray-900 leading-none">Author Name</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div className="grid grid-cols-12 gap-8 m-10">
+                            {
+                                loading ?
+                                    <CourseLoading count={6} />
+                                    : course.length > 0 ? course.map((course, index) => <CourseCard key={index} course={course} />)
+                                        : <div> <h1>No courses Found </h1></div>
+                            }
                         </div>
                     </Layout>
                 </div>

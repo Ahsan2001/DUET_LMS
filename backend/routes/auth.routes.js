@@ -7,6 +7,6 @@ import {Logout} from "../controller/auth/logout.js"
 
 authRoutes.post('/signup', Signup);
 authRoutes.post('/signin', Signin);
-authRoutes.post('/logout', Logout);
+authRoutes.get('/logout', Logout);
 
 export default authRoutes;

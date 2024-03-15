@@ -46,3 +46,27 @@ export interface SidebarProps {
 export interface TitleProps {
     title: string;
 }
+
+
+export interface LoadingCardProps {
+    count: number;
+}
+
+
+export interface Course {
+    courseName: string;
+    coverPhoto: string;
+    authorName: string;
+    authorPicture: string;
+    authorDept: string;
+    courseId: string;
+}
+
+export interface CourseCardProps {
+    course: Course;
+}
+
+export interface CourseListProps {
+    loading: boolean;
+    courses: Course[];
+}

@@ -12,7 +12,7 @@ import { Detail } from "../controller/online-courses/detail.js";
 
 
 courseRoutes.get('/get', GetAllCourses);
-courseRoutes.get('/detail/:id', Detail);
+courseRoutes.get('/course/:id', Detail);
 courseRoutes.post('/create', Auth, CreateCourse);
 courseRoutes.post('/edit/:id', Auth, EditCourse);
 courseRoutes.delete('/delete/:id', Auth, DeleteCourse);

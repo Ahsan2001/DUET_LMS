@@ -18,8 +18,8 @@ export const userSlice = createSlice({
     name: "user",
     initialState: initialState,
     reducers: {
-        setUser: (state,action) => {
-            const {user, auth} = action.payload;
+        setUser: (state, action) => {
+            const { user, auth } = action.payload;
             state._id = user._id;
             state.username = user.username;
             state.email = user.email;
@@ -35,11 +35,11 @@ export const userSlice = createSlice({
             state._id = "";
             state.username = "";
             state.email = "";
+            state.phone = "";
+            state.picture = "";
             state.rollNo = "";
             state.department = "";
             state.gender = "";
-            state.picture = "";
-            state.phone = "";
             state.auth = false;
         },
 
@@ -47,6 +47,6 @@ export const userSlice = createSlice({
 })
 
 
-export const {setUser, resetUser} = userSlice.actions;
+export const { setUser, resetUser } = userSlice.actions;
 
 export default userSlice.reducer;

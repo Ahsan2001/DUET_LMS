@@ -16,7 +16,7 @@ const Sidebar: React.FC = () => {
       {sidebarVisible ? <div className="bg-white-800 text-white w-64 py-6 px-4">
         <img
           className="mx-auto h-24 w-auto"
-          src="./logo.png"
+          src="/logo.png"
           alt="Your Company"
         />
         <ul className="mt-6">

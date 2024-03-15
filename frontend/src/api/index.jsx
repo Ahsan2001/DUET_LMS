@@ -45,3 +45,30 @@ export const ForgetApi = async (data) => {
   }
   return response;
 };
+
+
+// Log Out Api
+export const LogoutApi = async() =>{
+  let response;
+  try {
+    response = await api.get("auth/logout")
+  } catch (error) {
+    return error
+  }
+  return response
+}
+
+
+// Get All Courses
+export const GetCoursesApi = async() =>{
+  let response;
+  try {
+    response = await api.get("online-lectures/get")
+  } catch (error) {
+    return error
+  }
+  return response
+}
+
+
+
