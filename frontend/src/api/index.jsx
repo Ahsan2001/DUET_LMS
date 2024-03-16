@@ -71,4 +71,14 @@ export const GetCoursesApi = async() =>{
 }
 
 
+// Get detail Courses
+export const GetDetailCoursesApi = async(id) =>{
+  let response;
+  try {
+    response = await api.get(`online-lectures/course/${id}`)
+  } catch (error) {
+    return error
+  }
+  return response
+}
 

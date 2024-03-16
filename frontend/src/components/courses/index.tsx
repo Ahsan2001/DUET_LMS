@@ -3,8 +3,13 @@ import { CourseCardProps } from "../../interface";
 
 const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
     const navigate = useNavigate();
+    const handleNavigate = (title: string, id: string) => {
+        navigate(`/online-lectures/${encodeURIComponent(title.replace(/\s+/g, '-'))}`,
+            { state: { courseId: id } });
+    }
     return (
-        <div className="col-span-12 sm:col-span-6 lg:col-span-4 border border-gray-500 rounded shadow-lg" onClick={() => navigate(`/online-lectures/${course?.courseName.replace(/\s+/g, '-')}`)}>
+        <div className="col-span-12 sm:col-span-6 lg:col-span-4 border border-gray-500 rounded shadow-lg"
+            onClick={() => handleNavigate(course?.courseName, course?.courseId)}>
             <img className="w-full h-48" src={course?.coverPhoto} alt={course?.courseName} />
             <div className="px-6 py-4">
                 <div className="font-bold text-white text-xl mb-2">{course?.courseName}</div>
