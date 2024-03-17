@@ -1,12 +1,12 @@
 
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-import { Sidebar } from "../../../components";
-import Layout from "../../../layout";
+import { Sidebar } from "../../components";
+import Layout from "../../layout";
 import { useEffect, useState } from "react";
-import { GetDetailCoursesApi } from "../../../api";
+import { GetDetailCoursesApi } from "../../api";
 import styles from "./styles.module.css";
-import { titleCase } from "../../../utils/title-case";
-import { formatDate } from "../../../utils/format-date";
+import { titleCase } from "../../utils/title-case";
+import { formatDate } from "../../utils/format-date";
 
 
 const CourseDetail: React.FC = () => {
@@ -64,10 +64,10 @@ const CourseDetail: React.FC = () => {
         <div className="flex-1 bg-gray-800">
           <Layout>
             <div className="bg-white rounded-lg mx-10 mt-10 flex justify-between item-center">
-              <h2 className="text-xl font-semibold  p-3 text-gray-800    px-10" >
+              <h2 className="text-xl font-semibold  p-3 text-gray-800  px-10" >
                 {title?.toLocaleUpperCase()}
               </h2>
-              <h2 className="text-md font-semibold  p-3 text-gray-800    px-10">
+              <h2 className="text-md font-semibold  p-3 text-gray-800  px-10">
                 <span className="text-primary">Created on</span>  {formatDate(course?.createdAt)}
               </h2>
             </div>
@@ -78,7 +78,7 @@ const CourseDetail: React.FC = () => {
                     console.log(element)
                     return (
                       <div key={index} className={styles.courses_list} >
-                        <h2 className="text-white" onClick={() => handleNavigate(element?.title, element?._id)}>
+                        <h2 className="text-white cursor-pointer" onClick={() => handleNavigate(element?.title, element?._id)}>
                           <span>Lecture # {element?.chapterNo}</span>
                           {element.title.toLocaleUpperCase()}
                         </h2>

@@ -1,4 +1,5 @@
 // import CourseDetailDTO from "../../dto/course-detail.js";
+import LessonDetailDTO from "../../dto/lesson-detail.js";
 import Course from "../../models/course.js";
 import { courseGetByIdSchema } from "../../schema/lectures.js"
 
@@ -17,8 +18,17 @@ export const LectureDetail = async (req, res, next) => {
         if (!lesson) {
             return res.status(404).json({ message: 'Lesson not found' });
         }
-        // Return the lesson detail as a response
-        res.status(200).json({ message: 'Successfully fetch lesson detail', lesson: lesson.lessons[0],author: lesson.author });
+        const lessonDTO = new LessonDetailDTO({
+            author: {
+                first_name: lesson.author.first_name,
+                last_name: lesson.author.last_name,
+                dept: lesson.author.dept,
+                email: lesson.author.email,
+                picture: lesson.author.picture
+            },
+            lessons: lesson.lessons
+        });
+        res.status(200).json({ message: 'Successfully fetch lesson detail', data: lessonDTO });
     } catch (error) {
         return next(error)
     }
