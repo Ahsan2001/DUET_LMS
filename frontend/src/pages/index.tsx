@@ -9,5 +9,6 @@ export { default as OnlineLectures } from "./online-lectures";
 export { default as LearningResources } from "./learning-resources";
 export { default as Exam } from "./exam";
 export { default as Announcements } from "./announcements";
-export { default as CourseDetail} from "./online-lectures/course"
+export { default as CourseDetail } from "./online-lectures/course"
+export { default as CourseLectureDetail } from "./online-lectures/course/lesson"
 

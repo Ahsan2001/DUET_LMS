@@ -1,0 +1,54 @@
+.courses_list{
+    background: var(--primary-color-3);
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.courses_list span{
+    color: var(--primary-color-2);
+    font-weight: 700;
+    padding-right: 20px;
+}
+
+.custom_right_wrapper{
+    position: relative;
+    background: #f3f4f6;
+    border-radius: 6px;
+    margin-top: 50px;
+}
+
+.custom_right_wrapper img{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid var(--primary-color);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.custom_right_wrapper .innerContent{
+    padding: 70px 10px 10px;
+    text-align: left;
+}
+
+.custom_right_wrapper .innerContent button{
+    background: #1f2937;
+    color: #f3f4f6;
+    font-size: 14px;
+    padding: 7px 14px;
+    border-radius: 6px;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.custom_right_wrapper .innerContent p{
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.custom_right_wrapper .innerContent p span{
+    color: var(--primary-color);
+    font-weight: 600;
+}

@@ -1,9 +1,9 @@
 import axios from "axios";
-import { BACKEND_API_URL } from "../utils/constant";
+import { REACT_INTERNAL_API_PATH } from "../utils/constant";
 
 
 const api = axios.create({
-  baseURL: BACKEND_API_URL,
+  baseURL: REACT_INTERNAL_API_PATH,
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
@@ -76,6 +76,17 @@ export const GetDetailCoursesApi = async(id) =>{
   let response;
   try {
     response = await api.get(`online-lectures/course/${id}`)
+  } catch (error) {
+    return error
+  }
+  return response
+}
+
+// Get Courses Lecture detail 
+export const GetLectureDetailCoursesApi = async(id) =>{
+  let response;
+  try {
+    response = await api.get(`lesson/detail/${id}`)
   } catch (error) {
     return error
   }

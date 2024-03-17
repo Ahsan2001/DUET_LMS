@@ -1,11 +1,8 @@
 import dayjs from 'dayjs'
 
 export function CurrentDate() {
-    // Get the current date
     const currentDate = dayjs();
-    // Format the date to include day, date, and year
     const formattedDate = currentDate.format('ddd, D, YYYY');
-
     return (
         <div className='flex items-center	 gap-2'>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
