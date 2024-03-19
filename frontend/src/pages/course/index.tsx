@@ -35,7 +35,6 @@ const CourseDetail: React.FC = () => {
     }
   }
 
-
   useEffect(() => {
     FetchCourses()
     return () => {
@@ -43,15 +42,17 @@ const CourseDetail: React.FC = () => {
     }
   }, [])
 
-
   function handleMessage(){
     window.alert("Message Module is not completed yet")
   }
 
   const navigate = useNavigate();
   const handleNavigate = (pageTitle: string, id: string) => {
-      navigate(`/online-lectures/${title}/${encodeURIComponent(pageTitle.replace(/\s+/g, '-'))}`,
-          { state: { courseId: id } });
+    navigate(`/online-lectures/${title}/${encodeURIComponent(pageTitle.replace(/\s+/g, '-'))}`,
+    { state: { 
+        courseId: id,
+        pageTitle:title }
+    });
   }
 
   console.log(course, "course")
@@ -64,9 +65,23 @@ const CourseDetail: React.FC = () => {
         <div className="flex-1 bg-gray-800">
           <Layout>
             <div className="bg-white rounded-lg mx-10 mt-10 flex justify-between item-center">
-              <h2 className="text-xl font-semibold  p-3 text-gray-800  px-10" >
-                {title?.toLocaleUpperCase()}
-              </h2>
+              <nav className="flex" aria-label="Breadcrumb">
+                <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+                  <li className="inline-flex items-center">
+                    <Link to="/online-lectures" className="ms-10 inline-flex items-center text-gray-400 hover:text-primary text-xl font-semibold">
+                       ONLINE LECTURES
+                    </Link>
+                  </li>
+                  <li aria-current="page">
+                    <div className="flex items-center">
+                      <svg className="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4" />
+                      </svg>
+                      <span className="text-xl font-semibold p-3 text-gray-800  ">{title?.toLocaleUpperCase()}</span>
+                    </div>
+                  </li>
+                </ol>
+              </nav>
               <h2 className="text-md font-semibold  p-3 text-gray-800  px-10">
                 <span className="text-primary">Created on</span>  {formatDate(course?.createdAt)}
               </h2>
@@ -86,7 +101,6 @@ const CourseDetail: React.FC = () => {
                     )
                   })
                 }
-                {/* Content for column 1 (full width on small screens, 8 columns on medium screens and above) */}
               </div>
               <div className="sm:col-span-3">
                 <div className={styles.custom_right_wrapper}>
@@ -100,8 +114,6 @@ const CourseDetail: React.FC = () => {
                   </div>
                 </div>
               </div>
-              {/* <p className="text-white leading-none mb-2">Total Lectures {course?.lessons?.length}</p> */}
-              {/* <p className="text-white leading-none mb-2">Created on {formatDate(course?.createdAt)}</p> */}
             </div>
           </Layout>
         </div>
