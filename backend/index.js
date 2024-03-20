@@ -7,6 +7,7 @@ import cors from "cors"
 import authRoutes from "./routes/auth.routes.js";
 import courseRoutes from "./routes/courses.routes.js"
 import lessonRoutes from "./routes/lesson.routes.js"
+import commentRoutes from "./routes/comment.routes.js";
 import errorHandler from "./middlewares/errorHandler.js";
 const { PORT } = config;
 
@@ -23,7 +24,8 @@ dbconnect()
 
 app.use("/api/auth", authRoutes);
 app.use("/api/online-lectures", courseRoutes);
-app.use("/api/lesson", lessonRoutes)
+app.use("/api/lesson", lessonRoutes);
+app.use("/api/comment",commentRoutes)
 
 
 // for deployment testing purpose 

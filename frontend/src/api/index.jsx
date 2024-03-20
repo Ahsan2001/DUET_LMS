@@ -1,15 +1,14 @@
 import axios from "axios";
-import { BACKEND_API_URL } from "../utils/constant";
+import { REACT_INTERNAL_API_PATH } from "../utils/constant";
 
 
 const api = axios.create({
-  baseURL: BACKEND_API_URL,
+  baseURL: REACT_INTERNAL_API_PATH,
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
   },
 });
-
 
 // Sign In Api
 export const SignInApi = async (data) => {
@@ -22,7 +21,6 @@ export const SignInApi = async (data) => {
   return response;
 };
 
-
 // Sign Up Api
 export const SignUpApi = async (data) => {
   let response;
@@ -33,7 +31,6 @@ export const SignUpApi = async (data) => {
   }
   return response;
 };
-
 
 // Forget Api
 export const ForgetApi = async (data) => {
@@ -46,7 +43,6 @@ export const ForgetApi = async (data) => {
   return response;
 };
 
-
 // Log Out Api
 export const LogoutApi = async() =>{
   let response;
@@ -58,7 +54,6 @@ export const LogoutApi = async() =>{
   return response
 }
 
-
 // Get All Courses
 export const GetCoursesApi = async() =>{
   let response;
@@ -69,7 +64,6 @@ export const GetCoursesApi = async() =>{
   }
   return response
 }
-
 
 // Get detail Courses
 export const GetDetailCoursesApi = async(id) =>{
@@ -93,3 +87,24 @@ export const GetLectureDetailCoursesApi = async(id) =>{
   return response
 }
 
+// Get Comments in Lesson
+export const GetLessonCommentApi = async (id) => {
+  let response;
+  try {
+    response = await api.get(`comment/get-comment/${id}`);
+  } catch (error) {
+    return error
+  }
+  return response;
+}
+
+// Post comment in lesson
+export const PostLessonCommentApi = async (data) => {
+  let response;
+  try {
+    response = await api.post(`comment/new-comment`, data);
+  } catch (error) {
+    return error
+  }
+  return response;
+}

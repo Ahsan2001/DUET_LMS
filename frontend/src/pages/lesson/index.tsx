@@ -3,31 +3,51 @@ import { Link, useLocation, useParams } from "react-router-dom";
 import { Sidebar } from "../../components";
 import Layout from "../../layout";
 import { useEffect, useState } from "react";
-import { GetLectureDetailCoursesApi } from "../../api";
+import { GetLectureDetailCoursesApi, GetLessonCommentApi, PostLessonCommentApi } from "../../api";
 import styles from "./styles.module.css";
 import { titleCase } from "../../utils/title-case";
+import CommentList from "../../components/comment-list";
+import { useSelector } from "react-redux";
 
 
 const CourseLectureDetail: React.FC = () => {
   const { title } = useParams<{ title: string }>();
   const location = useLocation();
   const { courseId, pageTitle } = location.state;
-  console.log(courseId, pageTitle, "id")
   const [loading, setLoading] = useState<boolean>(false);
   const [course, setCourse] = useState<any>([]);
+
+
+  const [comments, setComments] = useState([]);
+  const [newComment, setNewComment] = useState("");
+  const [reload, setReload] = useState(false);
+  const user = useSelector((state: any) => state?.user);
 
 
   async function FetchCourses() {
     setLoading(true)
     try {
-      let response: any = await GetLectureDetailCoursesApi(courseId);
-      if (response.status === 200) {
-        setCourse(response?.data?.data)
+      let lessonResponse: any = await GetLectureDetailCoursesApi(courseId);
+      let commentResponse: any = await GetLessonCommentApi(courseId);
+      
+      // handle lesson response 
+      if (lessonResponse.status === 200) {
+        setCourse(lessonResponse?.data?.data)
         setLoading(false)
+        // console.log(lessonResponse?.data?.data.lessons[0]._id , "here is the id brother")
       } else {
         alert("something went wrong please check console")
-        console.log(response)
+        console.log(lessonResponse)
       }
+
+      // handle comment response
+      if (commentResponse.status === 201) {
+        setComments(commentResponse.data.data);
+      }else {
+        alert("something went wrong please check console")
+        console.log(commentResponse)
+      }
+
     } catch (error) {
       console.log(error)
     }
@@ -48,6 +68,24 @@ const CourseLectureDetail: React.FC = () => {
   function handleMessage() {
     window.alert("Message Module is not completed yet")
   }
+
+
+
+  const postCommentHandler = async () => {
+    const data = {
+      author: user?._id,
+      lesson: course?.lessons[0]._id,
+      content: newComment,
+    };
+
+    const response: any = await PostLessonCommentApi(data);
+    if (response.status === 201) {
+      setNewComment("");
+      setReload(!reload);
+    }
+  }
+
+
   return (
     <>
       <div className="bg-gray-100 min-h-screen flex flex-col md:flex-row">
@@ -89,17 +127,15 @@ const CourseLectureDetail: React.FC = () => {
                 {
                   (course?.lessons?.map((element: any, index: any) => {
                     console.log(element, index)
-                    const videoPath = "https://www.youtube.com/watch?v=wi8yJdKO1j0&ab_channel=WhatsAppFunVideos"
-                    const videoId = videoPath.split('v=')[1].split('&')[0];
+                    // const videoPath = "https://www.youtube.com/watch?v=wi8yJdKO1j0&ab_channel=WhatsAppFunVideos"
+                    // const videoId = videoPath.split('v=')[1].split('&')[0];
                     return (
                       <>
                         <div className="mt-10">
-                          <iframe
-                            className="w-full h-96"
-                            src={`https://www.youtube.com/embed/${videoId}`}
-                            title="YouTube video player"
-                            allowFullScreen
-                          ></iframe>
+                          <video className="w-full h-96" controls>
+                            <source src={element?.videoPath} type="video/mp4" />
+                            Your browser does not support the video tag.
+                          </video>
                         </div>
                         <div className={` ${styles.course_list} w-full mt-6`}>
                           <p className="text-white ">
@@ -113,6 +149,19 @@ const CourseLectureDetail: React.FC = () => {
                       </>
                     )
                   }))}
+
+
+
+              <div>
+              <CommentList comments={comments} />
+              <div className={styles.commentNow}>
+                <input placeholder="Enter your comment" value={newComment} onChange={(e) => setNewComment(e.target.value)} />
+                <button onClick={postCommentHandler}>  Post </button>
+              </div>
+            </div>
+
+
+
               </div>
               <div className="sm:col-span-3">
                 <div className={styles.custom_right_wrapper}>
@@ -126,7 +175,7 @@ const CourseLectureDetail: React.FC = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div >
           </Layout>
         </div>
       </div>

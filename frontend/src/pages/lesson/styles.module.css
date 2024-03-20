@@ -60,3 +60,23 @@
     padding-right: 20px;
     font-size: 17px;
 }
+
+.commentNow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.commentNow input{
+    width: 400px;
+    height: 37px;
+    font-size: 15px;
+    color: #000;
+    font-family: 400;
+    padding: 10px 14px;
+    border-radius: 7px;
+    border: none;
+    outline: none;
+    margin: 0 5px 0px 0;
+}

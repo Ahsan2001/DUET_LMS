@@ -3,9 +3,9 @@ class CommentDTO{
         this._id = comment._id;
         this.createdAt = comment.createdAt;
         this.content = comment.content;
-        this.authorName = comment.author.name
+        this.authorName = comment.author.first_name + " " + comment.author.last_name;
     }
 }
 
 
-module.exports = CommentDTO;
+export default CommentDTO;

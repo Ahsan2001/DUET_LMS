@@ -1,7 +1,8 @@
-import { commentSchema } from "../../schema/comment";
-import Comment from "../../models/comment"
+import { commentSchema } from "../../schema/comment.js";
+import Comment from "../../models/comment.js"
 
 export const CreateComment = async (req, res, next) => {
+
     const { error } = commentSchema.validate(req.body);
 
     if (error) {
