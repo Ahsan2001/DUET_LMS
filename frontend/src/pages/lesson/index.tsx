@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { GetLectureDetailCoursesApi } from "../../api";
 import styles from "./styles.module.css";
 import { titleCase } from "../../utils/title-case";
-import { formatDate } from "../../utils/format-date";
 
 
 const CourseLectureDetail: React.FC = () => {
@@ -41,7 +40,10 @@ const CourseLectureDetail: React.FC = () => {
     }
   }, [])
 
-  console.log(course , "course")
+  // if (Array.isArray(course.lessons) && course.lessons.length > 0) {
+  //   console.log(course.lessons[0].chapterNo);
+  // }
+
 
   function handleMessage() {
     window.alert("Message Module is not completed yet")
@@ -85,18 +87,32 @@ const CourseLectureDetail: React.FC = () => {
             <div className="grid sm:grid-cols-12 gap-8 m-10">
               <div className="sm:col-span-9">
                 {
-                  course?.lessons?.map((element: any, index: any) => {
-                    console.log(element)
+                  (course?.lessons?.map((element: any, index: any) => {
+                    console.log(element, index)
+                    const videoPath = "https://www.youtube.com/watch?v=wi8yJdKO1j0&ab_channel=WhatsAppFunVideos"
+                    const videoId = videoPath.split('v=')[1].split('&')[0];
                     return (
-                      <div key={index} className={styles.courses_list}>
-                        <h2 className="text-white">
-                          <span>Lecture # {element?.chapterNo}</span>
-                          {element.title.toLocaleUpperCase()}
-                        </h2>
-                      </div>
+                      <>
+                        <div className="mt-10">
+                          <iframe
+                            className="w-full h-96"
+                            src={`https://www.youtube.com/embed/${videoId}`}
+                            title="YouTube video player"
+                            allowFullScreen
+                          ></iframe>
+                        </div>
+                        <div className={` ${styles.course_list} w-full mt-6`}>
+                          <p className="text-white ">
+                            <span>Lecture # {element.chapterNo} </span>
+                            {element.title}
+                          </p>
+                          <p><span>Description</span>
+                            {element.description}
+                          </p>
+                        </div>
+                      </>
                     )
-                  })
-                }
+                  }))}
               </div>
               <div className="sm:col-span-3">
                 <div className={styles.custom_right_wrapper}>

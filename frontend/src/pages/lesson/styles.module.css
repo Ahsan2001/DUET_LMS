@@ -40,3 +40,23 @@
     color: var(--primary-color);
     font-weight: 600;
 }
+
+
+.course_list p{
+    font-size: 17px;
+    background: var(--primary-color-3);
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    color: #f3f4f6;
+    font-weight: 700;
+}
+
+.course_list span{
+    font-weight: 700;
+    padding-right: 20px;
+    color: var(--primary-color-2);
+    font-weight: 700;
+    padding-right: 20px;
+    font-size: 17px;
+}
