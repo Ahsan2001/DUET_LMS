@@ -1,0 +1,41 @@
+/* styles.module.css */
+
+h2{
+    color: #fff;
+}
+
+
+.formContainer {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: #fff;
+    padding: 50px 0;
+  }
+  .formContainer label,
+  .formContainer input{
+    color: #fff;
+  }
+  
+  .textField {
+    margin-bottom: 16px;
+    width: 100%;
+    color: #fff;
+  }
+  
+  .submitButton {
+    margin-top: 16px;
+    width: 100%;
+  }
+  
+
+  .imageInput{
+    margin: 0px 0 20px;
+  }
+  .imageInput img{
+    margin-bottom: 10px;
+  }
+  .imageInput button{
+    margin-top: 10px;
+  }

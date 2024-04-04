@@ -1,9 +1,9 @@
 import axios from "axios";
-import { BACKEND_API_URL } from "../utils/constant";
+import { REACT_INTERNAL_API_PATH } from "../utils/constant";
 
 
 const api = axios.create({
-  baseURL: BACKEND_API_URL,
+  baseURL: REACT_INTERNAL_API_PATH,
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",

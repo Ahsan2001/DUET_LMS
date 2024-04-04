@@ -9,7 +9,7 @@ export function Sidebar() {
     return (
         <>
         <div className={styles.logo}>
-         <img src="./logo.png" alt="university logo"  />
+         <img src="/logo.png" alt="university logo"  />
         </div>
         <nav className={styles.sidebar}>
             <ul>

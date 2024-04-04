@@ -127,15 +127,14 @@ const CourseLectureDetail: React.FC = () => {
                 {
                   (course?.lessons?.map((element: any, index: any) => {
                     console.log(element, index)
-                    // const videoPath = "https://www.youtube.com/watch?v=wi8yJdKO1j0&ab_channel=WhatsAppFunVideos"
+                    const videoPath = "https://www.youtube.com/embed/u6QfIXgjwGQ?si=iehAQML73i_7GQCt"
                     // const videoId = videoPath.split('v=')[1].split('&')[0];
                     return (
                       <>
                         <div className="mt-10">
-                          <video className="w-full h-96" controls>
-                            <source src={element?.videoPath} type="video/mp4" />
+                          <iframe  className="w-full h-96" src={videoPath} >
                             Your browser does not support the video tag.
-                          </video>
+                          </iframe >
                         </div>
                         <div className={` ${styles.course_list} w-full mt-6`}>
                           <p className="text-white ">
@@ -156,7 +155,7 @@ const CourseLectureDetail: React.FC = () => {
               <CommentList comments={comments} />
               <div className={styles.commentNow}>
                 <input placeholder="Enter your comment" value={newComment} onChange={(e) => setNewComment(e.target.value)} />
-                <button onClick={postCommentHandler}>  Post </button>
+                <button onClick={postCommentHandler}className="h-10 px-6 font-semibold rounded-md bg-black text-white" type="submit"> Post </button>
               </div>
             </div>
 

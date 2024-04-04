@@ -19,6 +19,7 @@ import { CoursesData } from "../../interface";
 import { DeleteCoursesApi, GetAllCoursesApi } from "../../api";
 import { Toast } from "../toast";
 import { Spinner } from "../spinner";
+import { useNavigate } from "react-router-dom";
 
 export function CoursesTable() {
 
@@ -31,6 +32,12 @@ export function CoursesTable() {
     setOpen(true);
     setDeleteID(id);
   };
+
+  const navigate = useNavigate();
+
+  function handleNavigation(){
+    navigate("/manage-courses/new")
+  }
 
   const handleClose = () => setOpen(false);
 
@@ -86,7 +93,7 @@ export function CoursesTable() {
 
     <div className={styles.titles}>
         <h2>Manage Courses</h2>
-        <Button variant="contained" startIcon={<AddIcon />} color="success"> Add New Course</Button>
+        <Button variant="contained" onClick={handleNavigation} startIcon={<AddIcon />} color="success"> Add New Course</Button>
     </div>
 
 
@@ -168,5 +175,5 @@ const style = {
   bgcolor: 'background.paper',
   border: '2px solid #fff',
   boxShadow: 24,
-  p: 4,
+  p: 2,
 };

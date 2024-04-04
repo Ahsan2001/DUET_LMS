@@ -18,8 +18,8 @@ const Comment: React.FC<CommentProps> = ({ comment }) => {
     <div className={styles.comment}>
         <div className={styles.commentText}>{content}</div>
         <div className={styles.header}>
-            <div className={styles.author}>{authorName}</div>
-            <div>comment on </div>
+            <div className={styles.author}>{authorName.toLocaleUpperCase()}</div>
+            <div className="text-white">comment on </div>
             <div className={styles.date}>{date}</div>
         </div>
     </div>
