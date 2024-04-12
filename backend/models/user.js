@@ -9,6 +9,7 @@ const userSchema = new Schema({
     phone: {type:String, require: true,unique: true },
     rollNo: {type:String, require: true,unique: true },
     dept: {type:String, require: true },
+    program: {type:String, require: true },
     picture: {type:String},
     password: {type:String, require: true},
     gender: {type:String, enum: ['male','female'], default: ''},
@@ -20,5 +21,5 @@ const userSchema = new Schema({
 })
 
 
-const User = mongoose.model("User", userSchema, "users");
+const User = mongoose.model("User", userSchema, "Users");
 export default User;

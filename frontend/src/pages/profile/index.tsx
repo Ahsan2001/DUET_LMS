@@ -30,11 +30,11 @@ const Profile: React.FC = () => {
                   <div className="grid gap-6 mx-10 mb-6 sm:grid-cols-2">
                     <div>
                       <label htmlFor="first_name" className="block mb-2 text-sm font-medium text-gray-900 text-white">First name</label>
-                      <input type="text" id="first_name" value={nameParts[0]} disabled className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" />
+                      <input type="text" id="first_name" value={nameParts[0].charAt(0).toUpperCase() + nameParts[0].slice(1, nameParts[0].length)} disabled className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" />
                     </div>
                     <div>
                       <label htmlFor="last_name" className="block mb-2 text-sm font-medium text-gray-900 text-white">Last name</label>
-                      <input type="text" id="last_name" value={nameParts[1]} disabled className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" />
+                      <input type="text" id="last_name" value={nameParts[1].charAt(0).toUpperCase() + nameParts[1].slice(1, nameParts[1].length)} disabled className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" />
                     </div>
                     <div>
                       <label htmlFor="rollNo" className="block mb-2 text-sm font-medium text-gray-900 text-white">Roll No</label>

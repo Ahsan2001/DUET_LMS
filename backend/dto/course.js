@@ -1,13 +1,13 @@
 class CourseDTO {
     constructor(course){
-        this.authorName = course.author.first_name + " " + course.author.last_name;
-        this.authorDept = course.author.dept;
-        this.authorPicture = course.author.picture;
-        this.coverPhoto = course.coverPhoto;
-        this.lessons = course.lessons
-        this.createdAt = course.createdAt;
-        this.courseId = course._id;
-        this.courseName = course.courseName
+        this.authorName = course?.author?.first_name + " " + course?.author?.last_name;
+        this.authorDept = course?.author?.dept;
+        this.authorPicture = course?.author?.picture;
+        this.coverPhoto = course?.coverPhoto;
+        this.lessons = course?.lessons
+        this.createdAt = course?.createdAt;
+        this.courseId = course?._id;
+        this.courseName = course?.courseName
     }
 }
 

@@ -19,7 +19,6 @@ const ImageUpload: React.FC = () => {
 
   return (
     <div className={`${styles.img_upload_custom} flex flex-col items-center`}>
-
       <input
         type="file"
         id="imageInput"

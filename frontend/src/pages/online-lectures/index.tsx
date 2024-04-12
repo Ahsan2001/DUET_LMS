@@ -46,9 +46,9 @@ const OnlineLectures: React.FC = () => {
                         <div className="grid grid-cols-12 gap-8 m-10">
                             {
                                 loading ?
-                                    <CourseLoading count={6} />
-                                    : course.length > 0 ? course.map((course, index) => <CourseCard key={index} course={course} />)
-                                        : <div> <h1>No courses Found </h1></div>
+                                <CourseLoading count={6} />
+                                : course.length > 0 ? course.map((course, index) => <CourseCard key={index} course={course} />)
+                                : <div className="col-span-12 bg-white h-96 flex items-center justify-center"> <h1 className="text-center text-xl">There is no courses Published Yet ! </h1></div>
                             }
                         </div>
                     </Layout>

@@ -16,6 +16,7 @@ const OnlineLectures = React.lazy(() => import('../pages/online-lectures'));
 const LearningResources = React.lazy(() => import('../pages/learning-resources'));
 const Exam = React.lazy(() => import('../pages/exam'));
 const Announcements = React.lazy(() => import('../pages/announcements'));
+const Classroom = React.lazy(()=> import('../pages/classroom'));
 const CourseDetail = React.lazy(() => import('../pages/course'));
 const CourseLectureDetail = React.lazy(() => import('../pages/lesson'));
 
@@ -42,6 +43,7 @@ const WebRoutes: React.FC = () => {
           <Route path="/learning-resources" element={<ProtectedRoute isAuth={auth}><LearningResources /></ProtectedRoute>} />
           <Route path="/exam" element={<ProtectedRoute isAuth={auth}><Exam /></ProtectedRoute>} />
           <Route path="/announcements" element={<ProtectedRoute isAuth={auth}><Announcements /></ProtectedRoute>} />
+          <Route path="/classroom" element={<ProtectedRoute isAuth={auth}><Classroom /></ProtectedRoute>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>

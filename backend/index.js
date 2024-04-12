@@ -9,9 +9,10 @@ import courseRoutes from "./routes/courses.routes.js"
 import lessonRoutes from "./routes/lesson.routes.js"
 import commentRoutes from "./routes/comment.routes.js";
 import errorHandler from "./middlewares/errorHandler.js";
+import profileRoutes from "./routes/profile.routes.js";
+
+
 const { PORT } = config;
-
-
 
 const app = express();
 
@@ -25,7 +26,8 @@ dbconnect()
 app.use("/api/auth", authRoutes);
 app.use("/api/online-lectures", courseRoutes);
 app.use("/api/lesson", lessonRoutes);
-app.use("/api/comment",commentRoutes)
+app.use("/api/comment",commentRoutes);
+app.use("/api/profile", profileRoutes);
 
 
 // for deployment testing purpose 
