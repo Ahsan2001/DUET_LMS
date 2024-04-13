@@ -44,7 +44,7 @@ const Signin: React.FC = () => {
         dispatch(setUser(response?.data));
         setLoading(false);
         setTimeout(() => {
-          navigate("/dashboard")
+          navigate("/profile")
         }, 1000)
       } else {
         setLoading(false);

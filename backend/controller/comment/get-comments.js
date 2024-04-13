@@ -1,5 +1,6 @@
 import CommentDTO from "../../dto/comment.js";
 import Comment from "../../models/comment.js";
+import Course from "../../models/course.js";
 import { commentByIdSchema } from "../../schema/comment.js";
 
 
@@ -18,7 +19,10 @@ export const GetComments =  async (req, res, next) => {
         let comments;
 
         try {
-            comments = await Comment.find({ lessons: _id }).populate("author")
+            // comments = await Comment.find({ }).populate("author")
+            comments = await Comment.find({lessons:_id}).populate("author")
+
+            console.log(comments)
         } catch (error) {
             return next(error)
         }   

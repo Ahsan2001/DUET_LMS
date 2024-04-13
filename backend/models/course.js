@@ -1,24 +1,17 @@
 import mongoose from "mongoose";
+import { lessonSchema } from "./lesson.js";
 
 const {Schema} = mongoose;
-
-const lessonDataStructure = new Schema({
-    chapterNo: { type: Number, required: true }, 
-    title: { type: String, required: true },
-    description: { type: String, required: true },
-    videoPath: { type: String, required: true }, 
-});
 
 const courseSchema = new Schema({
     coverPhoto : {type: String, require: true},
     author: {type: mongoose.SchemaTypes.ObjectId, ref: "User"},
     courseName: {type: String, require: true},
-    lessons: [lessonDataStructure]
+    lessons: [lessonSchema ]
 }, 
 {
     timestamps: true
 })
-
 
 const Course = mongoose.model("Course", courseSchema, "Courses");
 export default Course;

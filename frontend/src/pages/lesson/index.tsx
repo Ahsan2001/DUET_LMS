@@ -132,18 +132,13 @@ const CourseLectureDetail: React.FC = () => {
                     return (
                       <>
                         <div className="mt-10">
-                          <iframe  className="w-full h-96" src={videoPath} >
+                          <iframe  className="w-full h-96" src={element?.videoPath} >
                             Your browser does not support the video tag.
                           </iframe >
                         </div>
                         <div className={` ${styles.course_list} w-full mt-6`}>
-                          <p className="text-white ">
-                            <span>Lecture # {element.chapterNo} </span>
-                            {element.title}
-                          </p>
-                          <p><span>Description</span>
-                            {element.description}
-                          </p>
+                          <p className="text-white "><span>Title :</span>{element.title}</p>
+                          <p><span>Description :</span>{element.description}</p>
                         </div>
                       </>
                     )
