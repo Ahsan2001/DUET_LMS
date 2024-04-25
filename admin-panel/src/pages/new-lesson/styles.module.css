@@ -1,0 +1,10 @@
+/* styles.module.css */
+.bg_secondary {
+    background: var(--background);
+    min-height: 100vh;
+}
+
+.bg_primary {
+    background: var(--primary);
+    min-height: 100vh;
+}

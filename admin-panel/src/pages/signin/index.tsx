@@ -19,7 +19,7 @@ import { Toast, Spinner } from '../../components';
 
 
 
-export function SignIn() {
+ function SignIn() {
 
   const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
@@ -51,7 +51,7 @@ export function SignIn() {
         dispatch(setUser(response?.data));
         setLoading(false);
         setTimeout(() => {
-          navigate("/dashboard")
+          navigate("/manage-courses")
         }, 1000)
       } else {
         setLoading(false);
@@ -163,3 +163,5 @@ export function SignIn() {
     </Container>
   );
 }
+
+export default SignIn

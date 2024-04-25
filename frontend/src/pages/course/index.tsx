@@ -87,7 +87,7 @@ const CourseDetail: React.FC = () => {
               </h2>
             </div>
             <div className="grid sm:grid-cols-12 gap-8 m-10">
-              <div className="sm:col-span-9">
+              <div className="sm:col-span-12">
                 {
                   course?.lessons?.map((element: any, index: any) => {
                     console.log(element)
@@ -102,7 +102,7 @@ const CourseDetail: React.FC = () => {
                   })
                 }
               </div>
-              <div className="sm:col-span-3">
+              {/* <div className="sm:col-span-3">
                 <div className={styles.custom_right_wrapper}>
                   <img src={course?.authorPicture} alt={course?.authorName} />
                   <div className={styles.innerContent}>
@@ -113,7 +113,7 @@ const CourseDetail: React.FC = () => {
                     <button onClick={handleMessage}>Send Message</button>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </Layout>
         </div>

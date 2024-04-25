@@ -7,7 +7,7 @@ import styles from "./styles.module.css";
 import { NewCourse, Sidebar } from "../../components";
 
 
-export function CreateNewCourse() {
+function CreateNewCourse() {
     return (
         <Box component="section">
             <Grid container>
@@ -21,3 +21,5 @@ export function CreateNewCourse() {
         </Box>
     )
 }
+
+export  default CreateNewCourse

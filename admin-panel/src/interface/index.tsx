@@ -6,6 +6,7 @@ export interface ProtectedRouteProps {
 export interface SigninFormValues {
     email: string;
     password: string;
+    // userRole: string;
 }
 
 export interface TitleProps {

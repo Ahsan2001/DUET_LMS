@@ -126,8 +126,8 @@ const CourseLectureDetail: React.FC = () => {
               <div className="sm:col-span-9">
                 {
                   (course?.lessons?.map((element: any, index: any) => {
-                    console.log(element, index)
-                    const videoPath = "https://www.youtube.com/embed/u6QfIXgjwGQ?si=iehAQML73i_7GQCt"
+                    // console.log(element, index)
+                    // const videoPath = "https://www.youtube.com/embed/u6QfIXgjwGQ?si=iehAQML73i_7GQCt"
                     // const videoId = videoPath.split('v=')[1].split('&')[0];
                     return (
                       <>
@@ -147,11 +147,11 @@ const CourseLectureDetail: React.FC = () => {
 
 
               <div>
-              <CommentList comments={comments} />
+              {/* <CommentList comments={comments} />
               <div className={styles.commentNow}>
                 <input placeholder="Enter your comment" value={newComment} onChange={(e) => setNewComment(e.target.value)} />
                 <button onClick={postCommentHandler}className="h-10 px-6 font-semibold rounded-md bg-black text-white" type="submit"> Post </button>
-              </div>
+              </div> */}
             </div>
 
 

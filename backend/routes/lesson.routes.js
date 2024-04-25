@@ -14,7 +14,7 @@ import { LectureDetail } from "../controller/lesson/get-lesson.js";
 
 
 // lessonRoutes.get('/get', GetAllCourses);
-lessonRoutes.get('/detail/:id',Auth, LectureDetail);
+lessonRoutes.get('/detail/:id', LectureDetail);
 lessonRoutes.post('/create', Auth, CreateLesson);
 // lessonRoutes.post('/edit/:id', Auth, EditCourse);
 // lessonRoutes.delete('/delete/:id', Auth, DeleteCourse);

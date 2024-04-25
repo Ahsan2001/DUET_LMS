@@ -4,10 +4,10 @@ import { Box, Grid } from "@mui/material";
 
 // import assets 
 import styles from "./styles.module.css";
-import { CoursesTable, Sidebar } from "../../components";
+import { NewLesson, Sidebar } from "../../components";
 
 
-function ManageCourses() {
+ function AddNewLesson() {
     return (
         <Box component="section">
             <Grid container>
@@ -15,11 +15,11 @@ function ManageCourses() {
                     <Sidebar />
                 </Grid>
                 <Grid item xs={12} md={9} lg={10} className={styles.bg_primary}>
-                    <CoursesTable />
+                    <NewLesson />
                 </Grid>
             </Grid>
         </Box>
     )
 }
 
-export default ManageCourses
+export default AddNewLesson

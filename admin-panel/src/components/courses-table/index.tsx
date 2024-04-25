@@ -35,9 +35,21 @@ export function CoursesTable() {
 
   const navigate = useNavigate();
 
-  function handleNavigation(){
-    navigate("/manage-courses/new")
+  function handleNavigation(urlType: string){
+    if (urlType == "course") {
+     navigate("/manage-courses/new-course")
+    } else if ( urlType == "lesson") {
+     navigate("/manage-courses/add-lesson")
+    } else if ( urlType == "edit") {
+      navigate("/manage-courses/new-course")
+    }
+    else {
+      alert("some thing went wrong in navigation")
+    }
+  
   }
+
+
 
   const handleClose = () => setOpen(false);
 
@@ -93,7 +105,7 @@ export function CoursesTable() {
 
     <div className={styles.titles}>
         <h2>Manage Courses</h2>
-        <Button variant="contained" onClick={handleNavigation} startIcon={<AddIcon />} color="success"> Add New Course</Button>
+        <Button variant="contained" onClick={() => handleNavigation("course")} startIcon={<AddIcon />} color="success"> Add New Course</Button>
     </div>
 
 
@@ -120,7 +132,7 @@ export function CoursesTable() {
                   <td>{element?.courseName}</td>
                   <td className={styles.coverPhoto}><img src={element?.coverPhoto} alt={element?.authorName} /></td>
                   <td>{element?.lessons?.length}</td>
-                  <td> <Button variant="contained" startIcon={<AddIcon />} color="success"> Add</Button></td>
+                  <td> <Button variant="contained"  onClick={() => handleNavigation("lesson")} startIcon={<AddIcon />} color="success"> Add</Button></td>
                   <td className={styles.editBtn}><Button variant="contained" startIcon={<EditIcon />}> Edit </Button></td>
                   <td className={styles.deleteBtn}><Button variant="outlined" color="error" startIcon={<DeleteIcon />} onClick={() => { handleOpen(element?.courseId) }}> Delete </Button></td>
                 </tr>
@@ -151,7 +163,7 @@ export function CoursesTable() {
               Warning
             </Typography>
             <Typography id="transition-modal-description" sx={{ mt: 2, mb: 2 }}>
-              You are about to delete the course. Once deleted, it cannot be undone or recovered
+              You are about to delete the course. Once deleted, it cannot be recovered
             </Typography>
             <Button variant="contained" startIcon={<DeleteIcon />} color="error" onClick={handleDelete}> Confirm Delete</Button>
             <Button variant="contained" sx={{ mx: 2 }} onClick={handleClose}> Cancel</Button>

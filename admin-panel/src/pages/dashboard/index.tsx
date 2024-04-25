@@ -8,7 +8,7 @@ import { Sidebar } from "../../components";
 import { useSelector } from "react-redux";
 
 
-export function Dashboard() {
+ function Dashboard() {
     const data = useSelector((state: any) => state?.user);
 
     return (
@@ -35,3 +35,6 @@ export function Dashboard() {
     )
 }
 
+
+
+export default Dashboard;
