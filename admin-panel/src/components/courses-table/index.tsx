@@ -171,7 +171,6 @@ export function CoursesTable() {
         </Fade>
       </Modal>
 
-      <Toast />
 
     </>
 

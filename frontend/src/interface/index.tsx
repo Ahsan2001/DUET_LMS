@@ -34,6 +34,17 @@ export interface SigninFormValues {
     password: string;
 }
 
+export interface UpdatePasswordFormValues {
+    currentPassword: string;
+    newPassword: string;
+    confirmPassword: string;
+}
+
+
+
+
+
+
 export interface ForgetFormValues {
     email: string;
 }

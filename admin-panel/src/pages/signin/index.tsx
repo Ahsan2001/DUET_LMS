@@ -159,7 +159,6 @@ import { Toast, Spinner } from '../../components';
             </Button>}
         </Box>
       </Box>
-      <Toast />
     </Container>
   );
 }

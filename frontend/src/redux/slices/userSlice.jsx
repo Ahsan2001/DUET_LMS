@@ -31,6 +31,12 @@ export const userSlice = createSlice({
             state.auth = auth;
         },
 
+        setUserImage: (state, action) => {
+            const { user } = action.payload;
+            console.log(user)
+            state.picture = user.picture;
+        },
+
         resetUser: (state) => {
             state._id = "";
             state.username = "";
@@ -47,6 +53,6 @@ export const userSlice = createSlice({
 })
 
 
-export const { setUser, resetUser } = userSlice.actions;
+export const { setUser, resetUser,setUserImage } = userSlice.actions;
 
 export default userSlice.reducer;

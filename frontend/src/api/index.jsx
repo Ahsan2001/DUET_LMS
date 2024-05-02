@@ -1,9 +1,9 @@
 import axios from "axios";
-import { BACKEND_API_URL } from "../utils/constant";
+import { REACT_INTERNAL_API_PATH } from "../utils/constant";
 
 
 const api = axios.create({
-  baseURL: BACKEND_API_URL,
+  baseURL: REACT_INTERNAL_API_PATH,
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
@@ -103,6 +103,31 @@ export const PostLessonCommentApi = async (data) => {
   let response;
   try {
     response = await api.post(`comment/new-comment`, data);
+  } catch (error) {
+    return error
+  }
+  return response;
+}
+
+
+// Post comment in lesson
+export const UpdateProfileApi = async (data) => {
+  let response;
+  try {
+    response = await api.post(`profile/update-picture`, data);
+  } catch (error) {
+    return error
+  }
+  return response;
+}
+
+
+
+// update password api 
+export const UpdateUserPassword = async (data) => {
+  let response;
+  try {
+    response = await api.post(`profile/change-password`, data);
   } catch (error) {
     return error
   }

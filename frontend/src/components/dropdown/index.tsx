@@ -111,7 +111,6 @@ export function HeaderDropdown() {
                     </div>
                 )}
             </div>
-            <Toast />
         </>
 
     );

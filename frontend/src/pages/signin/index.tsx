@@ -5,20 +5,16 @@ import { SigninFormValues } from '../../interface';
 import SignInSchema from '../../schemas/signin';
 import { SignInApi } from '../../api';
 import { Flip, Slide, toast } from 'react-toastify'
-import { Toast } from '../../components';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../redux/slices/userSlice';
 
 
 const Signin: React.FC = () => {
 
-
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-
 
   const handleSignin = async () => {
     setLoading(true);
@@ -196,7 +192,6 @@ const Signin: React.FC = () => {
           </p>
         </div>
       </div>
-      <Toast />
     </>
 
   );
