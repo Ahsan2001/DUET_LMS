@@ -109,7 +109,6 @@ export const PostLessonCommentApi = async (data) => {
   return response;
 }
 
-
 // Post comment in lesson
 export const UpdateProfileApi = async (data) => {
   let response;
@@ -120,8 +119,6 @@ export const UpdateProfileApi = async (data) => {
   }
   return response;
 }
-
-
 
 // update password api 
 export const UpdateUserPassword = async (data) => {

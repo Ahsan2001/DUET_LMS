@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon index.js",
+    "dev": "nodemon index.js",
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "type": "module",
   "keywords": ["Dawood University of Enginnering & Technology E-Learning , DUET Learning Management System, DUET Classroom"],
-  "author": "Ahsan, Zeeshan",
+  "author": "Ahsan",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",

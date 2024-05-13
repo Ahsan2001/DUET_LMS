@@ -25,6 +25,7 @@ const WebRoutes: React.FC = () => {
 
   const { auth } = useSelector((state: any) => state?.user);
   // let auth = true;
+  
 
   return (
     <BrowserRouter>

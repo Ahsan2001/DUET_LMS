@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import updatePassword from "../../schemas/update-password";
+import updatePasswordSchemas from "../../schemas/update-password";
 import { useFormik } from "formik";
 import { UpdatePasswordFormValues } from "../../interface";
 
@@ -8,10 +8,6 @@ function UpdatePassword() {
 
     const handlePasswordUpdate = async (values: any) => {
         console.log(values);
-        setLoading(true);
-        // Simulate API call or other async operation
-        await new Promise((resolve) => setTimeout(resolve, 1000)); // Example async operation
-        setLoading(false);
     };
 
     const { values, touched, handleChange, handleBlur, errors, handleSubmit } = useFormik<UpdatePasswordFormValues>({
@@ -21,14 +17,28 @@ function UpdatePassword() {
             confirmPassword: "",
         },
 
-        validationSchema: updatePassword,
+        validationSchema: updatePasswordSchemas,
 
         onSubmit: async (values, action) => {
             console.log(values);
-            await handlePasswordUpdate(values);
+            // await handlePasswordUpdate(values);
             action.resetForm();
         },
     });
+
+   
+    
+
+
+
+
+
+
+
+
+
+
+
 
     return (
         <form className="sm:col-span-1" onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
@@ -54,7 +64,7 @@ function UpdatePassword() {
                         value={values.newPassword}
                         onBlur={handleBlur}
                         onChange={handleChange}
-                        // type="password"
+                        type="password"
                         id="password2"
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
                         placeholder="Enter New Password"
@@ -70,7 +80,7 @@ function UpdatePassword() {
                         value={values.confirmPassword}
                         onBlur={handleBlur}
                         onChange={handleChange}
-                        // type="password"
+                        type="password"
                         id="confirm_password"
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
                         placeholder="Enter Confirm Password"

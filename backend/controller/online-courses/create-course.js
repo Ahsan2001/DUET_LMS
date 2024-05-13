@@ -32,7 +32,7 @@ export const CreateCourse = async (req, res, next) => {
     try {
         response = await cloudinary.uploader.upload(coverPhoto);
     } catch (error) {
-        console.log(error)
+        // console.log(error)
         return next(error);
     }
     let newCourse;
