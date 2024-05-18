@@ -13,7 +13,7 @@ const CourseDetail: React.FC = () => {
   const { title } = useParams<{ title: string }>();
   const location = useLocation();
   const { courseId } = location.state;
-  console.log(courseId, "id")
+  // console.log(courseId, "id")
 
 
   const [loading, setLoading] = useState<boolean>(false);
@@ -55,7 +55,7 @@ const CourseDetail: React.FC = () => {
     });
   }
 
-  console.log(course, "course")
+  // console.log(course, "course")
 
 
   return (

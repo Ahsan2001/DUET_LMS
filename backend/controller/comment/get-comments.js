@@ -22,7 +22,7 @@ export const GetComments =  async (req, res, next) => {
             // comments = await Comment.find({ }).populate("author")
             comments = await Comment.find({lessons:_id}).populate("author")
 
-            console.log(comments)
+            // console.log(comments)
         } catch (error) {
             return next(error)
         }   

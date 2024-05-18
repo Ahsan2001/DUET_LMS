@@ -5,6 +5,6 @@ import {ProfilePicture} from "../controller/profile/picture.js";
 import { ChangePassword } from "../controller/profile/password.js";
 
 profileRoutes.post('/update-picture', ProfilePicture);
-profileRoutes.put('/change-password', ChangePassword);
+profileRoutes.post('/change-password', ChangePassword);
 
 export default profileRoutes;

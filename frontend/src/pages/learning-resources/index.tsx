@@ -9,7 +9,7 @@ const LearningResources: React.FC = () => {
                 <Sidebar />
                 <div className="flex-1 bg-gray-800">
                     <Layout>
-                        <div className="bg-white rounded-lg mx-10 mt-10">
+                        {/* <div className="bg-white rounded-lg mx-10 mt-10">
                             <h2 className="text-xl font-semibold  p-3 text-gray-800   mb-4 px-10">
                                 LEARNING RESOURSES
                             </h2>
@@ -24,7 +24,9 @@ const LearningResources: React.FC = () => {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
+                    <h2 className="text-2xl min-h-screen font-semibold text-center text-white mb-4"> LIBRARY FEATURE IS NOT COMPLETED YET !</h2>
+
                     </Layout>
                 </div>
             </div>
