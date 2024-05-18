@@ -11,8 +11,9 @@ export interface LayoutProps {
 }
 
 export interface ProtectedRouteProps {
-    isAuth: boolean;
-    children: any;
+    user: boolean;
+    children?: any;
+    redirect: string;
 }
 
 export interface SignupFormValues {
@@ -71,6 +72,7 @@ export interface Course {
     authorPicture: string;
     authorDept: string;
     courseId: string;
+    lessons: any
 }
 
 export interface CourseCardProps {

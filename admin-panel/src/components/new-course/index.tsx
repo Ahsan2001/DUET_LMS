@@ -2,26 +2,56 @@ import React, { useState } from 'react';
 import { TextField, Button, Container, Typography } from '@mui/material';
 import styles from './styles.module.css';
 import { useNavigate } from 'react-router-dom';
+import { CreateCoursesApi } from '../../api';
+import { useSelector } from 'react-redux';
 
 
 export const NewCourse: React.FC = () => {
   const [courseName, setCourseName] = useState('');
-  const [selectedImage, setSelectedImage] = useState<File | null>(null);
+
+  // const [selectedImage, setSelectedImage] = useState<File | null>(null);
+
+
+  const [image, setImage] = useState<string | null>(null);
+
+
   const [lessonTitle, setLessonTitle] = useState('');
   const [lessonDescription, setLessonDescription] = useState('');
   const [lessonVideo, setLessonVideo] = useState('');
   const navigate = useNavigate();
+  const data = useSelector((state: any) => state?.user);
 
 
 
-  const handleSubmit = () => {
-    console.log('Form submitted:', { courseName, selectedImage, lessonTitle, lessonDescription, lessonVideo });
+
+  const handleSubmit = async (e:any) => {
+    e.preventDefault();
+    
+    const apiData = {
+      courseName,
+      coverPhoto: image, 
+      title: lessonTitle, 
+      description: lessonDescription, 
+      author: data?._id,
+      videoPath: lessonVideo
+    }
+
+    const response: any = await CreateCoursesApi(apiData);
+
+    console.log(response, "response");
   };
 
+
+
+
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files.length > 0) {
-      const file = e.target.files[0];
-      setSelectedImage(file);
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImage(reader.result as string);
+      };
+      reader.readAsDataURL(file);
     }
   };
 
@@ -32,7 +62,7 @@ export const NewCourse: React.FC = () => {
         <h2>Create New Course</h2>
         <Button variant="contained" onClick={() => navigate(-1)}> Go Back</Button>
       </div>
-      <form className={styles.formContainer} onSubmit={handleSubmit}>
+      <form className={styles.formContainer} onSubmit={(e) =>handleSubmit(e)}>
         
         <TextField
           className={styles.textField}
@@ -49,9 +79,9 @@ export const NewCourse: React.FC = () => {
             style={{ display: 'none' }}
             id="imageInput"
           />
-          {selectedImage && (
+          {image && (
             <div>
-              <img src={URL.createObjectURL(selectedImage)} alt="Selected" style={{ maxWidth: '300px', marginTop: '16px' }} />
+              <img src={image} alt="Selected" style={{ maxWidth: '300px', marginTop: '16px' }} />
             </div>
           )}
           <label htmlFor="imageInput">

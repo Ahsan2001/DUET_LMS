@@ -26,7 +26,6 @@ const WebRoutes: React.FC = () => {
         <Routes>
           {/* Public Routes  */}
           <Route path="/" element={<SignIn />} />
-          <Route path="*" element={<h1>Error page here</h1>} />
 
           {/* Private Routes  */}
           <Route path="/dashboard" element={<ProtectedRoute isAuth={auth}><Dashboard /></ProtectedRoute>} />
@@ -34,6 +33,7 @@ const WebRoutes: React.FC = () => {
           <Route path="/manage-courses/new-course" element={<ProtectedRoute isAuth={auth}><CreateNewCourse /></ProtectedRoute>} />
           <Route path="/manage-courses/add-lesson" element={<ProtectedRoute isAuth={auth}><AddNewLesson /></ProtectedRoute>} />
           <Route path="/manage-courses/lesson/:id" element={<ProtectedRoute isAuth={auth}><AddNewLesson /></ProtectedRoute>} />
+          <Route path="*" element={<h1>Error page here</h1>} />
 
         </Routes>
       </Suspense>

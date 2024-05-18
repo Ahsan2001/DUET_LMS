@@ -161,10 +161,10 @@ const CourseLectureDetail: React.FC = () => {
                 <div className={styles.custom_right_wrapper}>
                   <img src={course?.authorPicture} alt={course?.authorName} />
                   <div className={styles.innerContent}>
-                    <p>Teacher: <span> {titleCase(course?.authorName)}</span></p>
+                    <p>Teacher <span> {titleCase(course?.authorName)}</span></p>
                     <p>Email:  <span> {course?.authorEmail}</span></p>
                     <p>Department:  <span> {titleCase(course?.authorDept)}</span></p>
-                    <p>Total Lectures: <span> {course?.lessons?.length}</span></p>
+                    {/* <p>Total Lectures: <span> {course?.lessons?.length}</span></p> */}
                     <button onClick={handleMessage}>Send Message</button>
                   </div>
                 </div>

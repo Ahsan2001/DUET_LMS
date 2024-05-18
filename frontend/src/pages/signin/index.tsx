@@ -27,7 +27,7 @@ const Signin: React.FC = () => {
       if (response.status === 201) {
         toast.success(response?.data?.message, {
           position: "bottom-right",
-          autoClose: false,
+          autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -40,13 +40,13 @@ const Signin: React.FC = () => {
         dispatch(setUser(response?.data));
         setLoading(false);
         setTimeout(() => {
-          navigate("/profile")
+          navigate("/")
         }, 1000)
       } else {
         setLoading(false);
         toast.error(response?.response?.data?.message, {
           position: "bottom-right",
-          autoClose: false,
+          autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -62,7 +62,7 @@ const Signin: React.FC = () => {
       setLoading(false);
       toast.error("Something Went wrong please retry", {
         position: "bottom-right",
-        autoClose: false,
+        autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,

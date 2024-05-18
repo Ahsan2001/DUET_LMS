@@ -21,7 +21,7 @@ function UpdatePassword() {
             if (response.status === 200) {
                 toast.success(response?.data?.message, {
                     position: "bottom-right",
-                    autoClose: false,
+                    autoClose: 5000,
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: true,
@@ -33,7 +33,7 @@ function UpdatePassword() {
             } else {
                 toast.error(response?.data?.message, {
                     position: "bottom-right",
-                    autoClose: false,
+                    autoClose: 5000,
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: true,

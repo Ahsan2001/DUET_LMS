@@ -5,7 +5,7 @@ export function Toast() {
     return (
         <ToastContainer
             position="bottom-right"
-            autoClose={false}
+            autoClose={5000}
             newestOnTop
             closeOnClick
             rtl={false}

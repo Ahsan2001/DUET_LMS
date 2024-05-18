@@ -1,13 +1,14 @@
-import React from "react";
-import { Navigate } from "react-router-dom";
 import { ProtectedRouteProps } from "../interface";
+import React from 'react'
+import { Navigate, Outlet } from 'react-router-dom'
 
-const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ isAuth, children }) => {
-    if (isAuth) {
-        return children;
-    } else {
-        return <Navigate to="/signin" />;
+
+const ProtectedRoute: React.FC<ProtectedRouteProps>  = (props) => {
+    const {children, user, redirect} = props;
+    if (!user) {
+        return <Navigate to={redirect}  />
     }
-};
+    return children ? children : <Outlet />
+}
 
-export default ProtectedRoute;
+export default ProtectedRoute

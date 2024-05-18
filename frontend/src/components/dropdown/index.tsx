@@ -5,7 +5,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { LogoutApi } from '../../api';
 import { Slide, toast } from 'react-toastify';
 import { resetUser } from '../../redux/slices/userSlice';
-import Toast from '../toast';
 
 export function HeaderDropdown() {
     const navigate = useNavigate();
@@ -30,7 +29,7 @@ export function HeaderDropdown() {
         await LogoutApi();
         toast.success("Logout Successfull", {
             position: "bottom-right",
-            autoClose: false,
+            autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -89,23 +88,22 @@ export function HeaderDropdown() {
 
 
                             <li>
-                                <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onClick={handleToggleSidebar}>
-                                    {sidebarVisible ? "Close" : "View"} Sidebar</a>
+                                <div  className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onClick={handleToggleSidebar}>
+                                    {sidebarVisible ? "Close" : "View"} Sidebar</div>
                             </li>
 
                             <li>
-                                <Link to="/profile" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                <Link to="/" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                     Settings
                                 </Link>
                             </li>
                             <li>
-                                <a
-                                    href="#"
-                                    onClick={handleLogout}
+                                <div
+                                     onClick={handleLogout}
                                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                                 >
                                     Sign out
-                                </a>
+                                </div>
                             </li>
                         </ul>
                     </div>

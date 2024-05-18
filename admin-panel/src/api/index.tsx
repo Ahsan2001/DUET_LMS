@@ -54,3 +54,17 @@ export const DeleteCoursesApi = async (id: Number) => {
   }
   return response;
 }
+
+
+// Delete Course Api
+export const CreateCoursesApi = async (data:any) => {
+  let response;
+  try {
+    response = await api.post(`/online-lectures/create`, data);
+  } catch (error) {
+    return error
+  }
+  return response;
+}
+
+

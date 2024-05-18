@@ -37,7 +37,7 @@ const Signup: React.FC = () => {
 
         toast.success(response?.data?.message, {
           position: "bottom-right",
-          autoClose: false,
+          autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -53,7 +53,7 @@ const Signup: React.FC = () => {
         setLoading(false);
         toast.error(response?.response?.data?.message, {
           position: "bottom-right",
-          autoClose: false,
+          autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -69,7 +69,7 @@ const Signup: React.FC = () => {
       setLoading(false);
       toast.error("Something Went wrong please retry", {
         position: "bottom-right",
-        autoClose: false,
+        autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,

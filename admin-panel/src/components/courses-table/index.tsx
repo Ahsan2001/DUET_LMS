@@ -71,14 +71,14 @@ export function CoursesTable() {
     const response: any = await DeleteCoursesApi(deleteId);
     if (response.status === 200) {
       toast.success(response?.data?.message, {
-        position: 'bottom-right',
-        autoClose: false,
+        position: "bottom-right",
+        autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: 'dark',
+        theme: "dark",
         transition: Slide,
       });
     } else {
@@ -119,7 +119,7 @@ export function CoursesTable() {
               <th>Cover Photo</th>
               <th>Total Lesson</th>
               <th>Add New Lesson</th>
-              <th>Edit Course</th>
+              {/* <th>Edit Course</th> */}
               <th>Delete Course</th>
             </tr>
           </thead>
@@ -133,7 +133,7 @@ export function CoursesTable() {
                   <td className={styles.coverPhoto}><img src={element?.coverPhoto} alt={element?.authorName} /></td>
                   <td>{element?.lessons?.length}</td>
                   <td> <Button variant="contained"  onClick={() => handleNavigation("lesson")} startIcon={<AddIcon />} color="success"> Add</Button></td>
-                  <td className={styles.editBtn}><Button variant="contained" startIcon={<EditIcon />}> Edit </Button></td>
+                  {/* <td className={styles.editBtn}><Button variant="contained" startIcon={<EditIcon />}> Edit </Button></td> */}
                   <td className={styles.deleteBtn}><Button variant="outlined" color="error" startIcon={<DeleteIcon />} onClick={() => { handleOpen(element?.courseId) }}> Delete </Button></td>
                 </tr>
               )

@@ -47,8 +47,8 @@ export const CreateCourse = async (req, res, next) => {
     } catch (error) {
         return next(error)
     }
-    const CourseData = new CourseDTO( newCourse)
-    res.status(201).json({ message: "Course uploaded successfull", CourseData })
+    // const CourseData = new CourseDTO( newCourse)
+    res.status(201).json({ message: "Course uploaded successfull", newCourse })
 }
 
 
