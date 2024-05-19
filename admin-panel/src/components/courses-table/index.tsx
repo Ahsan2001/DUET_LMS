@@ -35,11 +35,16 @@ export function CoursesTable() {
 
   const navigate = useNavigate();
 
-  function handleNavigation(urlType: string){
+  function handleNavigation(urlType: string, id?: Number){
+    console.log(id , "edit course id")
     if (urlType == "course") {
      navigate("/manage-courses/new-course")
     } else if ( urlType == "lesson") {
      navigate("/manage-courses/add-lesson")
+
+     navigate(`/manage-courses/add-lesson`,
+     { state: { courseId: id } });
+
     } else if ( urlType == "edit") {
       navigate("/manage-courses/new-course")
     }
@@ -132,7 +137,7 @@ export function CoursesTable() {
                   <td>{element?.courseName}</td>
                   <td className={styles.coverPhoto}><img src={element?.coverPhoto} alt={element?.authorName} /></td>
                   <td>{element?.lessons?.length}</td>
-                  <td> <Button variant="contained"  onClick={() => handleNavigation("lesson")} startIcon={<AddIcon />} color="success"> Add</Button></td>
+                  <td> <Button variant="contained"  onClick={() => handleNavigation("lesson",element?.courseId)} startIcon={<AddIcon />} color="success"> Add</Button></td>
                   {/* <td className={styles.editBtn}><Button variant="contained" startIcon={<EditIcon />}> Edit </Button></td> */}
                   <td className={styles.deleteBtn}><Button variant="outlined" color="error" startIcon={<DeleteIcon />} onClick={() => { handleOpen(element?.courseId) }}> Delete </Button></td>
                 </tr>

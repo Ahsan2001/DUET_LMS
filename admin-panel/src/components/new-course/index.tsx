@@ -1,32 +1,27 @@
 import React, { useState } from 'react';
-import { TextField, Button, Container, Typography } from '@mui/material';
+import { TextField, Button, Container, Typography, Slide } from '@mui/material';
 import styles from './styles.module.css';
 import { useNavigate } from 'react-router-dom';
 import { CreateCoursesApi } from '../../api';
 import { useSelector } from 'react-redux';
-
+import { toast,Slide as ToastSlides } from 'react-toastify';
 
 export const NewCourse: React.FC = () => {
   const [courseName, setCourseName] = useState('');
-
-  // const [selectedImage, setSelectedImage] = useState<File | null>(null);
-
-
   const [image, setImage] = useState<string | null>(null);
-
-
   const [lessonTitle, setLessonTitle] = useState('');
   const [lessonDescription, setLessonDescription] = useState('');
   const [lessonVideo, setLessonVideo] = useState('');
   const navigate = useNavigate();
+ 
+
   const data = useSelector((state: any) => state?.user);
 
 
 
-
-  const handleSubmit = async (e:any) => {
+const handleSubmit = async (e:any) => {
     e.preventDefault();
-    
+
     const apiData = {
       courseName,
       coverPhoto: image, 
@@ -35,14 +30,29 @@ export const NewCourse: React.FC = () => {
       author: data?._id,
       videoPath: lessonVideo
     }
-
     const response: any = await CreateCoursesApi(apiData);
+    
+    if (response.status === 201) {
+      toast.success(response?.data?.message, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: ToastSlides,
+      });
+    };
 
-    console.log(response, "response");
-  };
+
+    setTimeout(()=>{
+      navigate(-1)
+    },1000)
 
 
-
+}
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];

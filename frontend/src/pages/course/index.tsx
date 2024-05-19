@@ -5,7 +5,7 @@ import Layout from "../../layout";
 import { useEffect, useState } from "react";
 import { GetDetailCoursesApi } from "../../api";
 import styles from "./styles.module.css";
-import { titleCase } from "../../utils/title-case";
+// import { titleCase } from "../../utils/title-case";
 import { formatDate } from "../../utils/format-date";
 
 

@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ProtectedRoute from './protected';
 import { useSelector } from 'react-redux';
+import { Spinner } from '../components';
 
 // import { Signup, Signin, ForgetPassword, ResetPassword,NotFound, Profile, OnlineLectures, LearningResources, Exam , Announcements, CourseDetail, CourseLectureDetail } from '../pages';
 
@@ -27,7 +28,7 @@ const WebRoutes: React.FC = () => {
 
   return (
     <BrowserRouter>
-      <Suspense fallback={<h1 className='mt-10 text-center text-2xl font-bold'>ruko zara sabr karo load horha hai abhi ...</h1>}>
+      <Suspense fallback={ <Spinner />}>
         <Routes>
        
           <Route element={<ProtectedRoute  user={!auth}  redirect="/" /> } >

@@ -6,7 +6,9 @@ export const CreateLesson = async (req, res, next) => {
     const { chapterNo, title, description, videoPath, courseId } = req.body;
 
     try {
+
         const course = await Course.findById(courseId);
+
         if (!course) {
             return res.status(404).json({ message: "Course not found" });
         }
@@ -20,7 +22,8 @@ export const CreateLesson = async (req, res, next) => {
         course.lessons.push(newLesson);
         await course.save();
 
-        res.status(201).json({ message: "Lesson created successfully", lesson: newLesson });
+        res.status(201).json({ message: "Lesson created successfully" });
+    
     } catch (error) {
         return next(error);
     }

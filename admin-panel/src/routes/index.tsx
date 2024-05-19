@@ -17,12 +17,13 @@ const ManageCourses = React.lazy(() => import("../pages/manage-courses") )
 
 
 import ProtectedRoute from './protected';
+import { Spinner } from '../components';
 
 const WebRoutes: React.FC = () => {
   const { auth } = useSelector((state: any) => state?.user);
   return (
     <BrowserRouter>
-      <Suspense fallback={<h1 className='mt-10 text-center text-2xl font-bold'>ruko zara sabr karo load horha hai abhi ...</h1>}>
+      <Suspense fallback={<Spinner />}>
         <Routes>
           {/* Public Routes  */}
           <Route path="/" element={<SignIn />} />

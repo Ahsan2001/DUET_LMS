@@ -56,7 +56,7 @@ export const DeleteCoursesApi = async (id: Number) => {
 }
 
 
-// Delete Course Api
+// Create Course Api
 export const CreateCoursesApi = async (data:any) => {
   let response;
   try {
@@ -66,5 +66,19 @@ export const CreateCoursesApi = async (data:any) => {
   }
   return response;
 }
+
+
+// Add New Lesson to Courses Api
+export const AddNewLessonApi = async (data:any) => {
+  let response;
+  try {
+    response = await api.post(`/lesson/create`, data);
+  } catch (error) {
+    return error
+  }
+  return response;
+}
+
+
 
 

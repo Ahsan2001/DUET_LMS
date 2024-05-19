@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import updatePasswordSchemas from "../../schemas/update-password";
 import { useFormik } from "formik";
 import { UpdatePasswordFormValues } from "../../interface";
@@ -31,7 +31,7 @@ function UpdatePassword() {
                     transition: Slide,
                 });
             } else {
-                toast.error(response?.data?.message, {
+                toast.error(response?.response?.data?.message, {
                     position: "bottom-right",
                     autoClose: 5000,
                     hideProgressBar: false,
