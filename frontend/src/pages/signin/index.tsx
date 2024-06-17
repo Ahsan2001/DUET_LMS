@@ -89,11 +89,6 @@ const Signin: React.FC = () => {
     },
   })
 
-
-
-
-
-
   return (
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -114,7 +109,7 @@ const Signin: React.FC = () => {
               <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                 Email address
               </label>
-              <div className="mt-2 relative ">
+              <div className="mt-2 relative">
                 <input
                   value={values.email}
                   onBlur={handleBlur}
@@ -187,7 +182,7 @@ const Signin: React.FC = () => {
           <p className="mt-10 text-center text-sm text-gray-500">
             Dont Have a Account ?{' '}
             <Link to="/signup" className="font-semibold leading-6 text-primary hover:text-indigo-500">
-              Sign Up Now
+              Sign Up 
             </Link>
           </p>
         </div>

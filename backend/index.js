@@ -13,12 +13,9 @@ import profileRoutes from "./routes/profile.routes.js";
 
 
 const { PORT } = config;
-
 const app = express();
 
 app.use(cors({origin: true, credentials: true}));
-
-
 app.use(express.json({limit: '50mb'}));
 // app.use(express.urlencoded({limit: '50mb'}));
 

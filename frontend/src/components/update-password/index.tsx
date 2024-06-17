@@ -4,13 +4,20 @@ import { useFormik } from "formik";
 import { UpdatePasswordFormValues } from "../../interface";
 import { UpdateUserPassword } from "../../api";
 import { Slide, toast } from "react-toastify";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setFullPageLoading } from '../../redux/slices/loadingSlice';
+
+
 
 function UpdatePassword() {
-
+    const dispatch = useDispatch();
     const data = useSelector((state: any) => state?.user);
 
     const handlePasswordUpdate = async (values: any) => {
+
+        dispatch(setFullPageLoading(true));
+
+
         const apiData = {
             email : data?.email,
             currentPassword:  values.currentPassword,
@@ -43,6 +50,8 @@ function UpdatePassword() {
                     transition: Slide,
                 });
             }
+    dispatch(setFullPageLoading(false));
+
     } 
   
     const { values, touched, handleChange, handleBlur, errors, handleSubmit } = useFormik<UpdatePasswordFormValues>({

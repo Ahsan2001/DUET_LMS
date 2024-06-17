@@ -3,17 +3,17 @@
   "name": "DUET Learning Management System",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "/favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "_src": "logo192.png",
+      "_src": "/logo192.png",
       "_type": "image/png",
       "_sizes": "192x192"
     },
     {
-      "_src": "logo512.png",
+      "_src": "/logo512.png",
       "_type": "image/png",
       "_sizes": "512x512"
     }

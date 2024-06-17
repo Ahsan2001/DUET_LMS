@@ -4,6 +4,7 @@ import styles from "./styles.module.css";
 import { UpdateProfileApi } from '../../api';
 import { Slide, toast } from 'react-toastify';
 import { setUserImage } from '../../redux/slices/userSlice';
+import { setFullPageLoading } from '../../redux/slices/loadingSlice';
 
 const ImageUpload: React.FC = () => {
   const data = useSelector((state: any) => state?.user);
@@ -27,6 +28,7 @@ const ImageUpload: React.FC = () => {
 
 
   const imagePostHandler = async () => {
+    dispatch(setFullPageLoading(true));
 
     const uploadData = {
       email: data?.email,
@@ -51,6 +53,11 @@ const ImageUpload: React.FC = () => {
         transition: Slide,
       });
     }
+
+    dispatch(setFullPageLoading(false));
+
+
+
   }
 
 

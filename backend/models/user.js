@@ -14,7 +14,7 @@ const userSchema = new Schema({
     password: {type:String, require: true},
     gender: {type:String, enum: ['male','female'], default: ''},
     address: {type:String, require: true},
-    userType: { type: String, default: 'Teacher'}
+    // userType: { type: String, default: 'Teacher'}
 },
 
 {   
