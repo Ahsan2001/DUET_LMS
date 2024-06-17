@@ -180,7 +180,7 @@ const Signin: React.FC = () => {
           </form>
 
           <p className="mt-10 text-center text-sm text-gray-500">
-            Dont Have a Account ?{' '}
+            Don't Have a Account?{' '}
             <Link to="/signup" className="font-semibold leading-6 text-primary hover:text-indigo-500">
               Sign Up 
             </Link>

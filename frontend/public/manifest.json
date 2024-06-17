@@ -1,6 +1,7 @@
 {
-  "short_name": "DUET LMS",
   "name": "DUET Learning Management System",
+  "description": "DUET LMS is a software platform designed to manage online courses, have digital library, handle online quizzes, manage student assignment submissions,Real time Chat system, make announcements and more. It can be used as a learning management system for dawood university students and teachers.",
+  "short_name": "DUET LMS",
   "icons": [
     {
       "src": "/favicon.ico",
