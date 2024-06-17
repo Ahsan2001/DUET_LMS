@@ -39,7 +39,7 @@ const OnlineLectures: React.FC = () => {
                 <div className="flex-1 bg-gray-800">
                     <Layout>
                         <div className="bg-white rounded-lg mx-10 mt-10">
-                            <h2 className="text-xl font-semibold  p-3 text-gray-800   mb-4 px-10">
+                            <h2 className="text-sm font-semibold  p-3 text-gray-800   mb-4 px-10">
                                 ONLINE LECTURES
                             </h2>
                         </div>
@@ -48,7 +48,7 @@ const OnlineLectures: React.FC = () => {
                                 loading ?
                                 <CourseLoading count={6} />
                                 : course.length > 0 ? course.map((course, index) => <CourseCard key={index} course={course} />)
-                                : <div className="col-span-12 bg-white h-96 flex items-center justify-center"> <h1 className="text-center text-xl">There is no courses Published Yet ! </h1></div>
+                    : <div className="col-span-12 bg-white h-96 flex items-center justify-center"> <h1 className="text-center text-xl">There is no courses Published Yet ! </h1></div>
                             }
                         </div>
                     </Layout>

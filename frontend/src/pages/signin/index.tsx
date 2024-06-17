@@ -107,9 +107,9 @@ const Signin: React.FC = () => {
           <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); handleSubmit() }}>
             <div>
               <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-                Email address
+                Email address:
               </label>
-              <div className="mt-2 relative">
+              <div className="mt-1 relative">
                 <input
                   value={values.email}
                   onBlur={handleBlur}
@@ -126,11 +126,11 @@ const Signin: React.FC = () => {
             <div>
               <div className="flex items-center justify-between">
                 <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
-                  Password
+                  Password:
                 </label>
 
               </div>
-              <div className="mt-2 ">
+              <div className="mt-1">
 
                 <div className='relative'>
                   <input
@@ -157,7 +157,7 @@ const Signin: React.FC = () => {
                     }
                   </div>
                 </div>
-                <div className="text-xs text-right">
+                <div className="text-xs text-right mt-1">
                   <Link to="/forget-password" className="font-semibold  text-primary hover:text-alert">
                     Forgot password?
                   </Link>
@@ -180,7 +180,7 @@ const Signin: React.FC = () => {
           </form>
 
           <p className="mt-10 text-center text-sm text-gray-500">
-            Don't Have a Account?{' '}
+          Don't have an account?{' '}
             <Link to="/signup" className="font-semibold leading-6 text-primary hover:text-indigo-500">
               Sign Up 
             </Link>

@@ -33,23 +33,28 @@
 
 .custom_right_wrapper .innerContent p{
     font-size: 14px;
-    font-weight: 600;
 }
 
 .custom_right_wrapper .innerContent p span{
     color: var(--primary-color);
-    font-weight: 600;
 }
-
-
-.course_list p{
+.course_list h5{
     font-size: 17px;
     background: var(--primary-color-3);
     padding: 10px;
     border-radius: 6px;
     margin-bottom: 20px;
+    font-weight: 600;
     color: #f3f4f6;
-    font-weight: 700;
+}
+
+.course_list p{
+    font-size: 15px;
+    background: var(--primary-color-3);
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    color: #f3f4f6;
 }
 
 .course_list span{

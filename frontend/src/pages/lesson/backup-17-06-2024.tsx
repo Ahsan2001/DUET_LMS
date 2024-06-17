@@ -3,10 +3,12 @@ import { Link, useLocation, useParams } from "react-router-dom";
 import { Sidebar } from "../../components";
 import Layout from "../../layout";
 import { useEffect, useState } from "react";
-import { GetLectureDetailCoursesApi } from "../../api";
+import { GetLectureDetailCoursesApi, GetLessonCommentApi, PostLessonCommentApi } from "../../api";
 import styles from "./styles.module.css";
 import { titleCase } from "../../utils/title-case";
-import ReactPlayer from 'react-player/youtube'
+// import CommentList from "../../components/comment-list";
+import { useSelector } from "react-redux";
+
 
 const CourseLectureDetail: React.FC = () => {
   const { title } = useParams<{ title: string }>();
@@ -16,18 +18,36 @@ const CourseLectureDetail: React.FC = () => {
   const [course, setCourse] = useState<any>([]);
 
 
+  const [comments, setComments] = useState([]);
+  const [newComment, setNewComment] = useState("");
+  const [reload, setReload] = useState(false);
+  const user = useSelector((state: any) => state?.user);
+
+
   async function FetchCourses() {
     setLoading(true)
     try {
       let lessonResponse: any = await GetLectureDetailCoursesApi(courseId);
-      console.log(lessonResponse)
+      // let commentResponse: any = await GetLessonCommentApi(courseId);
+      
+      // handle lesson response 
       if (lessonResponse.status === 200) {
         setCourse(lessonResponse?.data?.data)
         setLoading(false)
+        // console.log(lessonResponse?.data?.data.lessons[0]._id , "here is the id brother")
       } else {
         alert("something went wrong please check console")
         console.log(lessonResponse)
       }
+
+      // handle comment response
+      // if (commentResponse.status === 201) {
+      //   setComments(commentResponse.data.data);
+      // }else {
+      //   alert("something went wrong please check console")
+      //   console.log(commentResponse)
+      // }
+
     } catch (error) {
       console.log(error)
     }
@@ -40,11 +60,30 @@ const CourseLectureDetail: React.FC = () => {
     }
   }, [])
 
+  // if (Array.isArray(course.lessons) && course.lessons.length > 0) {
+  //   console.log(course.lessons[0].chapterNo);
+  // }
+
 
   function handleMessage() {
     window.alert("Message Module is not completed yet")
   }
 
+
+
+  // const postCommentHandler = async () => {
+  //   const data = {
+  //     author: user?._id,
+  //     lesson: course?.lessons[0]._id,
+  //     content: newComment,
+  //   };
+
+  //   const response: any = await PostLessonCommentApi(data);
+  //   if (response.status === 201) {
+  //     setNewComment("");
+  //     setReload(!reload);
+  //   }
+  // }
 
 
   return (
@@ -87,26 +126,45 @@ const CourseLectureDetail: React.FC = () => {
               <div className="sm:col-span-9">
                 {
                   (course?.lessons?.map((element: any, index: any) => {
+                    // console.log(element, index)
+                    // const videoPath = "https://www.youtube.com/embed/u6QfIXgjwGQ?si=iehAQML73i_7GQCt"
+                    // const videoId = videoPath.split('v=')[1].split('&')[0];
                     return (
-                      <div key={index}>
+                      <>
                         <div className="mt-10">
-                          <ReactPlayer url={element?.videoPath} width="100%" />
+                          <iframe  className="w-full h-96" src={element?.videoPath} >
+                            Your browser does not support the video tag.
+                          </iframe >
                         </div>
                         <div className={` ${styles.course_list} w-full mt-6`}>
-                          <h5 className="text-white ">{element.title}</h5>
-                          <p>{element.description}</p>
+                          <p className="text-white "><span>Title :</span>{element.title}</p>
+                          <p><span>Description :</span>{element.description}</p>
                         </div>
-                      </div>
+                      </>
                     )
                   }))}
-           
+
+
+
+              <div>
+              {/* <CommentList comments={comments} />
+              <div className={styles.commentNow}>
+                <input placeholder="Enter your comment" value={newComment} onChange={(e) => setNewComment(e.target.value)} />
+                <button onClick={postCommentHandler}className="h-10 px-6 font-semibold rounded-md bg-black text-white" type="submit"> Post </button>
+              </div> */}
+            </div>
+
+
 
               </div>
               <div className="sm:col-span-3">
                 <div className={styles.custom_right_wrapper}>
                   <img src={course?.authorPicture} alt={course?.authorName} />
                   <div className={styles.innerContent}>
-                    <p>  {titleCase(course?.authorName)}</p>
+                    <p>Teacher <span> {titleCase(course?.authorName)}</span></p>
+                    <p>Email:  <span> {course?.authorEmail}</span></p>
+                    <p>Department:  <span> {titleCase(course?.authorDept)}</span></p>
+                    {/* <p>Total Lectures: <span> {course?.lessons?.length}</span></p> */}
                     <button onClick={handleMessage}>Send Message</button>
                   </div>
                 </div>

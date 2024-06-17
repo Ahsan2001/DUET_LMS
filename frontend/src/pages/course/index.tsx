@@ -5,15 +5,14 @@ import Layout from "../../layout";
 import { useEffect, useState } from "react";
 import { GetDetailCoursesApi } from "../../api";
 import styles from "./styles.module.css";
-// import { titleCase } from "../../utils/title-case";
 import { formatDate } from "../../utils/format-date";
-
+import moment from "moment"
 
 const CourseDetail: React.FC = () => {
   const { title } = useParams<{ title: string }>();
   const location = useLocation();
   const { courseId } = location.state;
-  // console.log(courseId, "id")
+
 
 
   const [loading, setLoading] = useState<boolean>(false);
@@ -42,9 +41,6 @@ const CourseDetail: React.FC = () => {
     }
   }, [])
 
-  function handleMessage(){
-    window.alert("Message Module is not completed yet")
-  }
 
   const navigate = useNavigate();
   const handleNavigate = (pageTitle: string, id: string) => {
@@ -68,7 +64,7 @@ const CourseDetail: React.FC = () => {
               <nav className="flex" aria-label="Breadcrumb">
                 <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
                   <li className="inline-flex items-center">
-                    <Link to="/online-lectures" className="ms-10 inline-flex items-center text-gray-400 hover:text-primary text-xl font-semibold">
+                    <Link to="/online-lectures" className="ms-10 inline-flex items-center text-gray-400 hover:text-primary text-sm font-semibold">
                        ONLINE LECTURES
                     </Link>
                   </li>
@@ -77,13 +73,13 @@ const CourseDetail: React.FC = () => {
                       <svg className="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4" />
                       </svg>
-                      <span className="text-xl font-semibold p-3 text-gray-800  ">{title?.toLocaleUpperCase()}</span>
+                      <span className="text-sm font-semibold p-2 text-gray-800  ">{title?.toLocaleUpperCase()}</span>
                     </div>
                   </li>
                 </ol>
               </nav>
-              <h2 className="text-md font-semibold  p-3 text-gray-800  px-10">
-                <span className="text-primary">Created on</span>  {formatDate(course?.createdAt)}
+              <h2 className="text-md font-semibold  p-2 text-gray-800  px-10">
+                <span className="text-primary text-sm">Created on</span>  {formatDate(course?.createdAt)}
               </h2>
             </div>
             <div className="grid sm:grid-cols-12 gap-8 m-10">
@@ -96,24 +92,15 @@ const CourseDetail: React.FC = () => {
                         <h2 className="text-white cursor-pointer" onClick={() => handleNavigate(element?.title, element?._id)}>
                           <span>Lecture # {element?.chapterNo}</span>
                           {element.title.toLocaleUpperCase()}
+
+                          <span className="text-gray-400 text-align-right float-right" >{moment(element?.createdAt).fromNow()}</span>
                         </h2>
                       </div>
                     )
                   })
                 }
               </div>
-              {/* <div className="sm:col-span-3">
-                <div className={styles.custom_right_wrapper}>
-                  <img src={course?.authorPicture} alt={course?.authorName} />
-                  <div className={styles.innerContent}>
-                    <p>Teacher: <span> {titleCase(course?.authorName)}</span></p>
-                    <p>Email:  <span> {course?.authorEmail}</span></p>
-                    <p>Department:  <span> {titleCase(course?.authorDept)}</span></p>
-                    <p>Total Lectures: <span> {course?.lessons?.length}</span></p>
-                    <button onClick={handleMessage}>Send Message</button>
-                  </div>
-                </div>
-              </div> */}
+            
             </div>
           </Layout>
         </div>

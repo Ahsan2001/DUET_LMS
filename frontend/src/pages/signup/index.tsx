@@ -126,7 +126,7 @@ const Signup: React.FC = () => {
               <label htmlFor="first_name" className="block text-sm font-medium leading-6 text-gray-900">
                 First name
               </label>
-              <div className="mt-2 relative">
+              <div className="mt-1 relative">
                 <input
                   type="text"
                   id="first_name"
@@ -145,7 +145,7 @@ const Signup: React.FC = () => {
               <label htmlFor="last-name" className="block text-sm font-medium leading-6 text-gray-900">
                 Last name
               </label>
-              <div className="mt-2 relative">
+              <div className="mt-1 relative">
                 <input
                   type="text"
                   value={values.last_name}
@@ -164,7 +164,7 @@ const Signup: React.FC = () => {
               <label htmlFor="dept" className="block text-sm font-medium leading-6 text-gray-900">
                 Department
               </label>
-              <div className="mt-2 relative">
+              <div className="mt-1 relative">
                 <input
                   id="dept"
                   type="text"
@@ -175,6 +175,32 @@ const Signup: React.FC = () => {
                   onChange={handleChange}
                   className="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
+
+
+
+
+
+
+<label htmlFor="countries" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label>
+  <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+    <option selected>Choose a country</option>
+    <option value="US">United States</option>
+    <option value="CA">Canada</option>
+    <option value="FR">France</option>
+    <option value="DE">Germany</option>
+  </select>
+
+
+
+
+
+
+
+
+
+
+
+
                 {errors.dept && touched.dept ? <p className='text-alert text-xs absolute inset-inline-start-0 mt-1'>{errors.dept}</p> : undefined}
               </div>
             </div>
@@ -185,7 +211,7 @@ const Signup: React.FC = () => {
               <label htmlFor="phone" className="block text-sm font-medium leading-6 text-gray-900">
                 Phone
               </label>
-              <div className="mt-2 relative">
+              <div className="mt-1 relative">
                 <input
                   id="phone"
                   type="text"
@@ -202,7 +228,7 @@ const Signup: React.FC = () => {
             <div className="mx-2 my-4 relative">
               <fieldset>
                 <legend className="text-sm font-semibold leading-6 text-gray-900">Select Gender</legend>
-                <div className="flex items-center mt-2 gap-x-6 ">
+                <div className="flex items-center mt-1 gap-x-6 ">
                   <div className="flex items-center gap-x-3">
                     <input
                       id="male"
@@ -244,7 +270,7 @@ const Signup: React.FC = () => {
               <label htmlFor="roll-no" className="block text-sm font-medium leading-6 text-gray-900">
                 Roll No
               </label>
-              <div className="mt-2">
+              <div className="mt-1">
                 <input
                   id="roll-no"
                   type="text"
@@ -268,7 +294,7 @@ const Signup: React.FC = () => {
               <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                 Email address
               </label>
-              <div className="mt-2 relative">
+              <div className="mt-1 relative">
                 <input
                   id="email"
                   type="email"
@@ -291,7 +317,7 @@ const Signup: React.FC = () => {
               <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
                 Password
               </label>
-              <div className="mt-2 relative">
+              <div className="mt-1 relative">
                 <input
                   id="password"
                   placeholder='Enter password'
@@ -321,7 +347,7 @@ const Signup: React.FC = () => {
               <label htmlFor="confimPassword" className="block text-sm font-medium leading-6 text-gray-900">
                 Confirm Password
               </label>
-              <div className="mt-2 relative">
+              <div className="mt-1 relative">
                 <input
                   id="confimPassword"
                   type="password"
@@ -343,7 +369,7 @@ const Signup: React.FC = () => {
               <label htmlFor="address" className="block text-sm font-medium leading-6 text-gray-900">
                 Address
               </label>
-              <div className="mt-2 relative">
+              <div className="mt-1 relative">
                 <input
                   type="text"
                   name="address"
