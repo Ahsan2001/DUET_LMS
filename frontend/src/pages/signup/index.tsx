@@ -5,13 +5,33 @@ import { SignupFormValues } from '../../interface';
 import SignUpSchema from '../../schemas/signup';
 import { SignUpApi } from '../../api';
 import { Flip, Slide, toast } from 'react-toastify'
+import { Province_Cities, departments } from '../../utils/constant';
+import { Inputs } from '../../components';
 
 const Signup: React.FC = () => {
 
-
-
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
+  const [selectedProvince, setSelectedProvince] = useState('');
+  const [selectedCity, setSelectedCity] = useState('');
+
+  const handleProvinceChange = (e: any) => {
+    setSelectedProvince(e.target.value);
+    setSelectedCity(''); // Reset city selection when province changes
+  };
+
+  const handleCityChange = (e: any) => {
+    setSelectedCity(e.target.value);
+  };
+
+  const provinces = Object.keys(Province_Cities);
+  const cities = selectedProvince ? Province_Cities[selectedProvince] : [];
+
+
+
+
+
+
   const navigate = useNavigate();
 
 
@@ -95,6 +115,7 @@ const Signup: React.FC = () => {
       address: "",
       password: "",
       confirmPassword: "",
+      batch: "",
     },
     validationSchema: SignUpSchema,
 
@@ -115,7 +136,7 @@ const Signup: React.FC = () => {
             alt="Your Company"
           />
           <h2 className="mt-4 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-            Sign Up to your account
+            Sign up to your account
           </h2>
         </div>
 
@@ -123,8 +144,20 @@ const Signup: React.FC = () => {
 
           <div className="mt-2 grid grid-cols-1 md:grid-cols-2">
             <div className="mx-2 mt-5">
-              <label htmlFor="first_name" className="block text-sm font-medium leading-6 text-gray-900">
-                First name
+
+              <Inputs
+                label="First Name"
+                HtmlForId="first_name"
+                handleBlur={handleBlur}
+                handleChange={handleChange}
+                values={values.first_name}
+                errors={errors.first_name}
+                touched={touched.first_name}
+              />
+
+              {/* <label htmlFor="first_name" 
+              className="block text-sm font-medium leading-6 text-gray-900">
+                First name:
               </label>
               <div className="mt-1 relative">
                 <input
@@ -138,12 +171,13 @@ const Signup: React.FC = () => {
                   className="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
                 {errors.first_name && touched.first_name ? <p className='text-alert text-xs	absolute inset-inline-start-0'>{errors.first_name}</p> : undefined}
-              </div>
+              </div> */}
+
             </div>
 
             <div className="mx-2 mt-5">
-              <label htmlFor="last-name" className="block text-sm font-medium leading-6 text-gray-900">
-                Last name
+              {/* <label htmlFor="last-name" className="block text-sm font-medium leading-6 text-gray-900">
+                Last name:
               </label>
               <div className="mt-1 relative">
                 <input
@@ -157,59 +191,55 @@ const Signup: React.FC = () => {
                   className="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
                 {errors.last_name && touched.last_name ? <p className='text-alert text-xs	absolute inset-inline-start-0'>{errors.last_name}</p> : undefined}
-              </div>
+              </div> */}
+
+
+              <Inputs
+                label="Last name"
+                HtmlForId="last-name"
+                handleBlur={handleBlur}
+                handleChange={handleChange}
+                values={values.last_name}
+                errors={errors.last_name}
+                touched={touched.last_name}
+              />
+
+
+
             </div>
 
-            <div className="mx-2 mt-5">
-              <label htmlFor="dept" className="block text-sm font-medium leading-6 text-gray-900">
-                Department
+
+
+
+            <div className="mx-2 mt-4">
+              <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+                Email address:
               </label>
               <div className="mt-1 relative">
                 <input
-                  id="dept"
-                  type="text"
-                  placeholder='Enter your department'
-                  value={values.dept}
-                  name="dept"
+                  id="email"
+                  type="email"
+                  name="email"
+                  value={values.email}
                   onBlur={handleBlur}
+                  placeholder='Enter email address'
                   onChange={handleChange}
                   className="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
-
-
-
-
-
-
-<label htmlFor="countries" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label>
-  <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-    <option selected>Choose a country</option>
-    <option value="US">United States</option>
-    <option value="CA">Canada</option>
-    <option value="FR">France</option>
-    <option value="DE">Germany</option>
-  </select>
-
-
-
-
-
-
-
-
-
-
-
-
-                {errors.dept && touched.dept ? <p className='text-alert text-xs absolute inset-inline-start-0 mt-1'>{errors.dept}</p> : undefined}
+                {errors.email && touched.email ? <p className='text-alert text-xs	absolute inset-inline-start-0'>{errors.email}</p> : undefined}
               </div>
             </div>
+
+
+
+
+
 
 
 
             <div className="mx-2 mt-5">
               <label htmlFor="phone" className="block text-sm font-medium leading-6 text-gray-900">
-                Phone
+                Phone:
               </label>
               <div className="mt-1 relative">
                 <input
@@ -227,7 +257,7 @@ const Signup: React.FC = () => {
 
             <div className="mx-2 my-4 relative">
               <fieldset>
-                <legend className="text-sm font-semibold leading-6 text-gray-900">Select Gender</legend>
+                <legend className="text-sm font-semibold leading-6 text-gray-900">Select Gender:</legend>
                 <div className="flex items-center mt-1 gap-x-6 ">
                   <div className="flex items-center gap-x-3">
                     <input
@@ -265,10 +295,52 @@ const Signup: React.FC = () => {
             </div>
           </div>
 
-          <div className=" grid grid-cols-1 md:grid-cols-2 ">
+
+
+
+
+
+
+
+          <div className="mx-2 mb-2">
+            <div>
+              <label htmlFor="dept" className="block text-sm font-medium leading-6 text-gray-900">
+                Department:
+              </label>
+              <div className="mt-1 relative">
+                <select
+                  id="dept"
+                  name="dept"
+                  value={values.dept}
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  className="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                >
+                  <option value="" disabled hidden>
+                    Select your department
+                  </option>
+                  {departments.map((department, index) => (
+                    <option key={index} value={department}>
+                      {department}
+                    </option>
+                  ))}
+                </select>
+                {errors.dept && touched.dept && (
+                  <p className="text-alert text-xs absolute inset-inline-start-0 mt-1">
+                    {errors.dept}
+                  </p>
+                )}
+              </div>
+            </div>
+
+          </div>
+
+
+
+          <div className="grid grid-cols-1 md:grid-cols-2 ">
             <div className="mx-2 mt-4">
               <label htmlFor="roll-no" className="block text-sm font-medium leading-6 text-gray-900">
-                Roll No
+                Enrollment No:
               </label>
               <div className="mt-1">
                 <input
@@ -276,7 +348,7 @@ const Signup: React.FC = () => {
                   type="text"
                   name="rollNo"
                   value={values.rollNo}
-                  placeholder='Enter roll number'
+                  placeholder='Enter rollment number'
                   onBlur={handleBlur}
                   onChange={handleChange}
                   className="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -288,34 +360,31 @@ const Signup: React.FC = () => {
 
 
 
-
-
             <div className="mx-2 mt-4">
-              <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-                Email address
+              <label htmlFor="batch" className="block text-sm font-medium leading-6 text-gray-900">
+                Batch No:
               </label>
-              <div className="mt-1 relative">
+              <div className="mt-1">
                 <input
-                  id="email"
-                  type="email"
-                  name="email"
-                  value={values.email}
+                  id="batch"
+                  type="text"
+                  name="batch"
+                  value={values.batch}
+                  placeholder='Enter batch'
                   onBlur={handleBlur}
-                  placeholder='Enter email address'
                   onChange={handleChange}
                   className="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
-                {errors.email && touched.email ? <p className='text-alert text-xs	absolute inset-inline-start-0'>{errors.email}</p> : undefined}
+                {errors.batch && touched.batch ? <p className='text-alert text-xs absolute inset-inline-start-0 mt-1'>{errors.batch}</p> : undefined}
+
               </div>
             </div>
-
-
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 mt-2">
             <div className="mx-2  mt-5">
               <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
-                Password
+                Password:
               </label>
               <div className="mt-1 relative">
                 <input
@@ -345,7 +414,7 @@ const Signup: React.FC = () => {
             </div>
             <div className="mx-2  mt-5">
               <label htmlFor="confimPassword" className="block text-sm font-medium leading-6 text-gray-900">
-                Confirm Password
+                Confirm Password:
               </label>
               <div className="mt-1 relative">
                 <input
@@ -364,10 +433,66 @@ const Signup: React.FC = () => {
           </div>
 
 
+
+
+
+
+          <div className="grid grid-cols-1 md:grid-cols-2 mt-2">
+            <div className="mx-2  mt-5">
+              <label htmlFor="province" className="block text-sm font-medium leading-6 text-gray-900">
+                Province:
+              </label>
+              <div className="mt-1 relative">
+                <select
+                  id="province"
+                  name="province"
+                  value={selectedProvince}
+                  onChange={handleProvinceChange}
+                  className="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                >
+                  <option value="" disabled hidden>
+                    Select your province
+                  </option>
+                  {provinces.map((province, index) => (
+                    <option key={index} value={province}>
+                      {province}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div className="mx-2  mt-5">
+              <label htmlFor="city" className="block text-sm font-medium leading-6 text-gray-900">
+                City:
+              </label>
+              <div className="mt-1 relative">
+                <select
+                  id="city"
+                  name="city"
+                  value={selectedCity}
+                  onChange={handleCityChange}
+                  className="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  disabled={!selectedProvince}
+                >
+                  <option value="" disabled hidden>
+                    Select your city
+                  </option>
+                  {cities.map((city, index) => (
+                    <option key={index} value={city}>
+                      {city}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+          </div>
+
+
           <div className="grid grid-cols-1 mt-2">
             <div className="mx-2 my-4">
               <label htmlFor="address" className="block text-sm font-medium leading-6 text-gray-900">
-                Address
+                Permanent  Address:
               </label>
               <div className="mt-1 relative">
                 <input
@@ -399,13 +524,14 @@ const Signup: React.FC = () => {
 
 
           <p className="mt-10 text-center text-sm text-gray-500">
-            Already have an account ?{' '}
+            Already have an account?{' '}
             <Link to="/signin" className="font-semibold leading-6 text-primary hover:text-indigo-500">
-              Sign In Now
+              Sign In 
             </Link>
           </p>
         </div>
       </div>
+
     </>
   );
 };

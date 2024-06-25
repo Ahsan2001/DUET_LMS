@@ -7,3 +7,4 @@ export { default as CourseLoading } from "./loading/courses";
 export { default as CourseCard } from "./courses"
 export { default as UpdatePassword } from "./update-password";
 export { default as Spinner} from "./spinner";
+export { default as Inputs} from "./inputs";

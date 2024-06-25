@@ -22,6 +22,7 @@ export interface SignupFormValues {
     email: string;
     rollNo: string;
     dept: string;
+    batch: string;
     phone: string;
     picture?: string;
     gender: string;
@@ -29,6 +30,18 @@ export interface SignupFormValues {
     password: string;
     confirmPassword: string;
 }
+
+export interface SignupInputsValues {
+    label: string;
+    HtmlForId: string;
+    handleBlur: (e: React.FocusEvent<HTMLInputElement>) => void;
+    handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    values:  string;
+    errors: any;
+    touched: any;
+};
+
+
 
 export interface SigninFormValues {
     email: string;

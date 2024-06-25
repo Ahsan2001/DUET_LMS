@@ -22,7 +22,7 @@ export const ProfilePicture = async (req, res, next) => {
 
 
         const response = await cloudinary.uploader.upload(profilePictureUrl);
-        user.picture = response.secure_url;
+        user.picture = await response.secure_url;
 
         await user.save();
 
